@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2017 Stéphane Baiget
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/snp_margin_padding_size_medium"
+            android:layout_marginLeft="@dimen/snp_margin_padding_size_medium"
+            android:layout_marginTop="@dimen/snp_margin_padding_size_medium"
+            android:text="@string/title_dec"
+            />
+
+        <TextView
+            android:id="@+id/tv_dec_result"
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/snp_margin_padding_size_medium"
+            tools:text="12548"
+            />
+
+        <CheckBox
+            android:id="@+id/cb_natural"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/snp_margin_padding_size_medium"
+            android:layout_marginLeft="@dimen/snp_margin_padding_size_medium"
+            android:text="@string/action_natural"
+            />
+
+        <CheckBox
+            android:id="@+id/cb_relative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/snp_margin_padding_size_medium"
+            android:layout_marginLeft="@dimen/snp_margin_padding_size_medium"
+            android:checked="true"
+            android:text="@string/action_relative"
+            />
+
+        <Button
+            android:id="@+id/btn_dec_dialog"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/snp_margin_padding_size_medium"
+            android:text="@string/action_dec_dialog"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/divider"
+            />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/snp_margin_padding_size_medium"
+            android:layout_marginLeft="@dimen/snp_margin_padding_size_medium"
+            android:layout_marginTop="@dimen/snp_margin_padding_size_medium"
+            android:text="@string/title_hex"
+            />
+
+        <TextView
+            android:id="@+id/tv_hex_result"
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/snp_margin_padding_size_medium"
+            tools:text="8D56BFF"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/snp_margin_padding_size_medium"
+            android:layout_marginLeft="@dimen/snp_margin_padding_size_medium"
+            android:layout_marginTop="@dimen/snp_margin_padding_size_medium"
+            android:text="@string/info_range"
+            />
+
+        <me.bendik.simplerangeview.SimpleRangeView
+            android:id="@+id/range_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/snp_margin_padding_size_medium"
+            android:layout_marginLeft="@dimen/snp_margin_padding_size_medium"
+            android:layout_marginRight="@dimen/snp_margin_padding_size_medium"
+            app:activeLineColor="?colorAccent"
+            app:activeThumbColor="?colorAccent"
+            app:count="11"
+            app:end="8"
+            app:minDistance="2"
+            app:movable="true"
+            app:start="2"
+            />
+
+        <Button
+            android:id="@+id/btn_hex_dialog"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/action_hex_dialog"
+            />
+    </LinearLayout>
+</ScrollView>
