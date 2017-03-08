@@ -1,6 +1,6 @@
 # SimpleNumberPicker
 
-A customisable natural and hexadecimal material picker view for Android.
+A customisable decimal and hexadecimal material picker view for Android.
 
 <img src="https://raw.githubusercontent.com/StephaneBg/SimpleNumberPicker/master/artwork/decimal_picker.png">
 <img src="https://raw.githubusercontent.com/StephaneBg/SimpleNumberPicker/master/artwork/hexa_picker.png">
@@ -24,25 +24,27 @@ And add the dependency
 
 ## Usage
 
-Parameters are optional.
-
 ### DecimalPickerDialog
 
-To display a natural picker `DialogFragment`:
+To display a decimal picker `DialogFragment`:
 ``` java
         new DecimalPickerDialog.Builder()
-                .setKey("CustomTag")
+                .setReference(REF_DEC_DIALOG) // Optional
+                .setNatural(false) // Optional - false is default
+                .setRelative(true) // Optional - true is default
+                .setTheme(R.style.DecimalPickerTheme) // Optional
                 .create()
                 .show(getSupportFragmentManager(), TAG_DEC_DIALOG);
 ```
 
-### HexadecimalPickerDialog
+### HexaPickerDialog
 To display a hexadecimal picker `DialogFragment`:
 ``` java
         new HexaPickerDialog.Builder()
-                .setKey("CustomTag")
-                .setMinLength(2)
-                .setMaxLength(8)
+                .setReference(REF_HEX_DIALOG) // Optional
+                .setMinLength(2) // Optional - Default is none
+                .setMaxLength(8) // Optional - Default is none
+                .setTheme(R.style.HexaPickerTheme) // Optional
                 .create()
                 .show(getSupportFragmentManager(), TAG_HEX_DIALOG);
 ```
@@ -50,8 +52,40 @@ To display a hexadecimal picker `DialogFragment`:
 ## Handler
 Your parent `Activity` or parent `Fragment` must implement `DecimalPickerHandler` or `HexaPickerHandler`.
 
-## TODO
-Add ability to style dialog.
+## Styling
+
+ 1. You can use your own themes if you'd like to change certain attributes.  SimpleNumberPicker currently allows for customization of the following attributes:
+
+        snpKeyColor              :: color of the keys
+        snpNumberColor           :: color of the entered number
+        snpBackspaceColor        :: color of the backspace button
+        snpDialogBackground      :: color of the dialog background
+
+ 2. Create your own custom theme in `styles.xml`:
+
+  ```xml
+    <style name="DecimalPickerTheme" parent="SimpleNumberPickerTheme">
+        <item name="snpKeyColor">@android:color/white</item>
+        <item name="snpNumberColor">@android:color/white</item>
+        <item name="snpBackspaceColor">@android:color/white</item>
+        <item name="colorAccent">@android:color/white</item>
+        <item name="snpDialogBackground">@color/color_primary</item>
+    </style>
+  ```
+
+See sample for more details.
+
+## Contribution
+
+### Pull requests are welcome!
+
+Feel free to contribute to SimpleNumberPicker.
+
+If you've fixed a bug or have a feature you've added, just create a pull request. If you've found a bug, want a new feature, or have other questions, file an issue. I will try to answer as soon as possible.
+
+### Applications using SimpleNumberPicker
+
+Please send a pull request if you would like to be added here.
 
 ## License
 Copyright 2017 Stéphane Baiget
