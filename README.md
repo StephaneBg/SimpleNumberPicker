@@ -1,9 +1,10 @@
+[![Release](https://jitpack.io/v/StephaneBg/SimpleNumberPicker.svg)](https://jitpack.io/#StephaneBg/SimpleNumberPicker)
+
 # SimpleNumberPicker
 
 A customisable decimal and hexadecimal material picker view for Android.
 
-<img src="https://raw.githubusercontent.com/StephaneBg/SimpleNumberPicker/master/artwork/decimal_picker.png">
-<img src="https://raw.githubusercontent.com/StephaneBg/SimpleNumberPicker/master/artwork/hexa_picker.png">
+<img src="https://raw.githubusercontent.com/StephaneBg/SimpleNumberPicker/master/artwork/decimal_picker.png"><img src="https://raw.githubusercontent.com/StephaneBg/SimpleNumberPicker/master/artwork/hexa_picker.png">
 
 ## Download
 Add the JitPack repository in your build.gradle at the end of repositories:
@@ -24,7 +25,7 @@ And add the dependency
 
 ## Usage
 
-### DecimalPickerDialog
+### DecimalPickerDialog
 
 To display a decimal picker `DialogFragment`:
 ``` java
@@ -37,7 +38,8 @@ To display a decimal picker `DialogFragment`:
                 .show(getSupportFragmentManager(), TAG_DEC_DIALOG);
 ```
 
-### HexaPickerDialog
+### HexaPickerDialog
+
 To display a hexadecimal picker `DialogFragment`:
 ``` java
         new HexaPickerDialog.Builder()
