@@ -34,13 +34,14 @@
 
         <TextView
             android:id="@+id/tv_hex_number"
-            style="@style/TextAppearance.AppCompat.Display1"
+            style="@style/Number"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:padding="@dimen/snp_margin_padding_size_medium"
             tools:text="8B56E4FE"
+            android:maxLines="1"
             />
 
         <ImageButton
