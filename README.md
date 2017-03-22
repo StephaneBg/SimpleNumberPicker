@@ -26,11 +26,13 @@ If your project has ButterKnife installed
 ```
     dependencies {
         compile('com.github.StephaneBg:SimpleNumberPicker:1.0') {
-            exclude group: 'com.jakewharton' module: 'butterknife'
-            exclude group: 'com.jakewharton' module: 'butterknife-compile'
+            exclude group: 'com.jakewharton', module: 'butterknife'
+            exclude group: 'com.jakewharton', module: 'butterknife-compile'
         }
     }
 ```
+This prevents the library from loading its own Butterknife and use your app's Butterknife.
+for complete compatibility, please use Butterknife 8.4.0 and above.'
 
 ## Usage
 
