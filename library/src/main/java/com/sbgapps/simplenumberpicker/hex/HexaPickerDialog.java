@@ -50,7 +50,7 @@ public class HexaPickerDialog extends DialogFragment {
     private static final int NO_MIN_LENGTH = -1;
     private static final int NO_MAX_LENGTH = -1;
 
-    AlertDialog dialog;
+    private AlertDialog dialog;
     private TextView numberTextView;
     private ImageButton backspaceButton;
 
@@ -82,12 +82,6 @@ public class HexaPickerDialog extends DialogFragment {
 
         setStyle(STYLE_NO_TITLE, theme);
         setCancelable(false);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        onNumberChanged();
     }
 
     @NonNull
@@ -175,6 +169,12 @@ public class HexaPickerDialog extends DialogFragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        onNumberChanged();
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(ARG_REFERENCE, reference);
@@ -182,17 +182,6 @@ public class HexaPickerDialog extends DialogFragment {
         outState.putInt(ARG_MAX_LENGTH, maxLength);
         outState.putInt(ARG_THEME, theme);
         outState.putString(ARG_SAVED_VALUE, numberTextView.getText().toString());
-    }
-
-    private void assignArguments(Bundle args) {
-        if (args.containsKey(ARG_REFERENCE))
-            reference = args.getInt(ARG_REFERENCE);
-        if (args.containsKey(ARG_MIN_LENGTH))
-            minLength = args.getInt(ARG_MIN_LENGTH);
-        if (args.containsKey(ARG_MAX_LENGTH))
-            maxLength = args.getInt(ARG_MAX_LENGTH);
-        if (args.containsKey(ARG_THEME))
-            theme = args.getInt(ARG_THEME);
     }
 
     private void onNumberChanged() {
@@ -204,6 +193,17 @@ public class HexaPickerDialog extends DialogFragment {
         } else {
             dialog.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(true);
         }
+    }
+
+    private void assignArguments(Bundle args) {
+        if (args.containsKey(ARG_REFERENCE))
+            reference = args.getInt(ARG_REFERENCE);
+        if (args.containsKey(ARG_MIN_LENGTH))
+            minLength = args.getInt(ARG_MIN_LENGTH);
+        if (args.containsKey(ARG_MAX_LENGTH))
+            maxLength = args.getInt(ARG_MAX_LENGTH);
+        if (args.containsKey(ARG_THEME))
+            theme = args.getInt(ARG_THEME);
     }
 
     public static class Builder {

@@ -82,12 +82,6 @@ public class DecimalPickerDialog extends DialogFragment {
         setCancelable(false);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        onNumberChanged();
-    }
-
     @SuppressLint("SetTextI18n")
     @NonNull
     @Override
@@ -207,6 +201,12 @@ public class DecimalPickerDialog extends DialogFragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        onNumberChanged();
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(ARG_REFERENCE, reference);
@@ -214,17 +214,6 @@ public class DecimalPickerDialog extends DialogFragment {
         outState.putBoolean(ARG_NATURAL, natural);
         outState.putInt(ARG_THEME, theme);
         outState.putString(ARG_SAVED_VALUE, numberTextView.getText().toString());
-    }
-
-    private void assignArguments(Bundle args) {
-        if (args.containsKey(ARG_REFERENCE))
-            reference = args.getInt(ARG_REFERENCE);
-        if (args.containsKey(ARG_RELATIVE))
-            relative = args.getBoolean(ARG_RELATIVE);
-        if (args.containsKey(ARG_NATURAL))
-            natural = args.getBoolean(ARG_NATURAL);
-        if (args.containsKey(ARG_THEME))
-            theme = args.getInt(ARG_THEME);
     }
 
     private void onNumberChanged() {
@@ -237,6 +226,17 @@ public class DecimalPickerDialog extends DialogFragment {
         } else {
             dialog.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(true);
         }
+    }
+
+    private void assignArguments(Bundle args) {
+        if (args.containsKey(ARG_REFERENCE))
+            reference = args.getInt(ARG_REFERENCE);
+        if (args.containsKey(ARG_RELATIVE))
+            relative = args.getBoolean(ARG_RELATIVE);
+        if (args.containsKey(ARG_NATURAL))
+            natural = args.getBoolean(ARG_NATURAL);
+        if (args.containsKey(ARG_THEME))
+            theme = args.getInt(ARG_THEME);
     }
 
     public static class Builder {
