@@ -16,10 +16,10 @@
 
 ext {
     // Versions
-    supportVersion = "25.1.1"
+    supportVersion = "25.3.0"
     rxJavaVersion = "2.0.6"
     rxAndroidVersion = "2.0.1"
-    butterknifeVersion = "8.4.0"
+    butterknifeVersion = "8.5.1"
     rangeViewVersion = "0.1.1"
 
     // Packages
@@ -52,6 +52,6 @@ ext {
     rangeView = buildDependency(rangeViewPackage, 'simplerangeview', rangeViewVersion)
 }
 
-String buildDependency(String pack, String dependency, String version) {
+static String buildDependency(String pack, String dependency, String version) {
     return "${pack}:${dependency}:${version}"
 }
