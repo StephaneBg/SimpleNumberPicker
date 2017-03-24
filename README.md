@@ -19,7 +19,7 @@ Add the JitPack repository in your build.gradle at the end of repositories:
 And add the dependency
 ```
 	dependencies {
-	        compile 'com.github.StephaneBg:SimpleNumberPicker:1.0'
+	        compile 'com.github.StephaneBg:SimpleNumberPicker:{latest-version}'
 	}
 ```
 
