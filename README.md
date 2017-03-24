@@ -9,19 +9,30 @@ A customisable decimal and hexadecimal material picker view for Android.
 ## Download
 Add the JitPack repository in your build.gradle at the end of repositories:
 ```
-	allprojects {
-		repositories {
-			...
-			maven { url "https://jitpack.io" }
-		}
-	}
+    allprojects {
+        repositories {
+            ...
+            maven { url "https://jitpack.io" }
+        }
+    }
 ```
 And add the dependency
 ```
-	dependencies {
-	        compile 'com.github.StephaneBg:SimpleNumberPicker:1.0'
-	}
+    dependencies {
+            compile 'com.github.StephaneBg:SimpleNumberPicker:1.0'
+    }
 ```
+If your project has ButterKnife installed
+```
+    dependencies {
+        compile('com.github.StephaneBg:SimpleNumberPicker:1.0') {
+            exclude group: 'com.jakewharton', module: 'butterknife'
+            exclude group: 'com.jakewharton', module: 'butterknife-compile'
+        }
+    }
+```
+This prevents the library from loading its own Butterknife and use your app's Butterknife.
+for complete compatibility, please use Butterknife 8.4.0 and above.'
 
 ## Usage
 
