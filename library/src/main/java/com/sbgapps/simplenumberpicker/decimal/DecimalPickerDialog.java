@@ -37,6 +37,8 @@ import android.widget.TextView;
 import com.sbgapps.simplenumberpicker.R;
 import com.sbgapps.simplenumberpicker.utils.ThemeUtil;
 
+import java.text.DecimalFormatSymbols;
+
 public class DecimalPickerDialog extends DialogFragment {
 
     private static final String ARG_REFERENCE = "ARG_REFERENCE";
@@ -55,6 +57,7 @@ public class DecimalPickerDialog extends DialogFragment {
     private int reference = DEFAULT_REFERENCE;
     private boolean relative = true;
     private boolean natural = false;
+    private String decimalSeparator;
     private int theme = R.style.SimpleNumberPickerTheme;
 
     private static DecimalPickerDialog newInstance(int reference, boolean relative, boolean natural, int theme) {
@@ -124,6 +127,7 @@ public class DecimalPickerDialog extends DialogFragment {
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                     String result = numberTextView.getText().toString();
                     if (result.isEmpty()) result = "0";
+                    result = result.replace(',', '.');
                     final float number = Float.parseFloat(result);
                     final Activity activity = getActivity();
                     final Fragment fragment = getParentFragment();
@@ -180,16 +184,18 @@ public class DecimalPickerDialog extends DialogFragment {
             sign.setVisibility(View.INVISIBLE);
         }
 
-        // Init point
-        TextView point = (TextView) view.findViewById(R.id.key_point);
+        // Init decimal separator
+        initDecimalSeparator();
+        TextView separator = (TextView) view.findViewById(R.id.key_point);
         if (natural) {
-            point.setVisibility(View.INVISIBLE);
+            separator.setVisibility(View.INVISIBLE);
         } else {
-            point.setTextColor(color);
-            point.setOnClickListener(v -> {
-                if (numberTextView.getText().toString().contains(".")) return;
+            separator.setText(decimalSeparator);
+            separator.setTextColor(color);
+            separator.setOnClickListener(v -> {
+                if (numberTextView.getText().toString().contains(decimalSeparator)) return;
                 String number = numberTextView.getText().toString();
-                numberTextView.setText(number + ".");
+                numberTextView.setText(number + decimalSeparator);
                 onNumberChanged();
             });
         }
@@ -237,6 +243,11 @@ public class DecimalPickerDialog extends DialogFragment {
             natural = args.getBoolean(ARG_NATURAL);
         if (args.containsKey(ARG_THEME))
             theme = args.getInt(ARG_THEME);
+    }
+
+    private void initDecimalSeparator() {
+        DecimalFormatSymbols formatSymbols = new DecimalFormatSymbols();
+        decimalSeparator = "" + formatSymbols.getDecimalSeparator();
     }
 
     public static class Builder {

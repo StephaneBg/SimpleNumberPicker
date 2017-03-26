@@ -39,8 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:padding="@dimen/snp_margin_padding_size_medium"
             android:maxLines="1"
+            android:padding="@dimen/snp_margin_padding_size_medium"
             tools:text="123458"
             />
 
@@ -199,10 +199,10 @@
                     style="@style/Key"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:text="."
                     app:layout_columnWeight="1"
                     app:layout_gravity="fill"
                     app:layout_rowWeight="1"
+                    tools:text="."
                     />
             </android.support.v7.widget.GridLayout>
         </android.support.percent.PercentFrameLayout>
