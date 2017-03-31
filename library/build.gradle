@@ -36,4 +36,5 @@ dependencies {
     compile supportDependencies.appCompat
     compile supportDependencies.percent
     compile supportDependencies.grid
+    compile autoFitTextView
 }

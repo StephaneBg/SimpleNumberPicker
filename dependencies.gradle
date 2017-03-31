@@ -21,12 +21,14 @@ ext {
     rxAndroidVersion = "2.0.1"
     butterknifeVersion = "8.5.1"
     rangeViewVersion = "0.1.1"
+    autoFitTextViewVersion = "0.2.1"
 
     // Packages
     supportPackage = 'com.android.support'
     reactivePackage = 'io.reactivex.rxjava2'
     jakeWhartonPackage = 'com.jakewharton'
     rangeViewPackage = 'me.bendik.simplerangeview'
+    autoFitTextViewPackage = "me.grantland"
 
     supportDependencies = [
             appCompat        : buildDependency(supportPackage, 'appcompat-v7', supportVersion),
@@ -50,6 +52,8 @@ ext {
     ]
 
     rangeView = buildDependency(rangeViewPackage, 'simplerangeview', rangeViewVersion)
+
+    autoFitTextView = buildDependency(autoFitTextViewPackage, 'autofittextview', autoFitTextViewVersion)
 }
 
 static String buildDependency(String pack, String dependency, String version) {

@@ -27,21 +27,22 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="92dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         >
 
-        <TextView
+        <me.grantland.widget.AutofitTextView
             android:id="@+id/tv_hex_number"
             style="@style/Number"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:padding="@dimen/snp_margin_padding_size_medium"
-            tools:text="8B56E4FE"
             android:maxLines="1"
+            android:padding="@dimen/snp_margin_padding_size_medium"
+            app:minTextSize="14sp"
+            tools:text="8B56E4FE"
             />
 
         <ImageButton
