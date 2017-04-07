@@ -50,6 +50,7 @@
             style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/snp_margin_padding_size_medium"
             tools:src="@drawable/snp_ic_backspace_black_24dp"
             />
     </LinearLayout>

@@ -61,11 +61,11 @@ public class ThemeUtil {
         StateListDrawable res = new StateListDrawable();
         res.setExitFadeDuration(50);
         Drawable drawable = ContextCompat.getDrawable(context, drawableResId);
-        DrawableCompat.setTint(drawable, color);
-        res.addState(new int[]{android.R.attr.state_enabled}, drawable);
-        drawable = ContextCompat.getDrawable(context, drawableResId);
         DrawableCompat.setTint(drawable, color & 0x40FFFFFF);
         res.addState(new int[]{-android.R.attr.state_enabled}, drawable);
+        drawable = ContextCompat.getDrawable(context, drawableResId);
+        DrawableCompat.setTint(drawable, color);
+        res.addState(new int[]{android.R.attr.state_enabled}, drawable);
         return res;
     }
 }

@@ -128,7 +128,10 @@ public class DecimalPickerDialog extends DialogFragment {
                     String result = numberTextView.getText().toString();
                     if (result.isEmpty()) result = "0";
                     result = result.replace(',', '.');
+                    if (result.equals(".")) result = "0";
+
                     final float number = Float.parseFloat(result);
+
                     final Activity activity = getActivity();
                     final Fragment fragment = getParentFragment();
                     if (activity instanceof DecimalPickerHandler) {
@@ -234,6 +237,11 @@ public class DecimalPickerDialog extends DialogFragment {
         }
     }
 
+    private void initDecimalSeparator() {
+        DecimalFormatSymbols formatSymbols = new DecimalFormatSymbols();
+        decimalSeparator = "" + formatSymbols.getDecimalSeparator();
+    }
+
     private void assignArguments(Bundle args) {
         if (args.containsKey(ARG_REFERENCE))
             reference = args.getInt(ARG_REFERENCE);
@@ -243,11 +251,6 @@ public class DecimalPickerDialog extends DialogFragment {
             natural = args.getBoolean(ARG_NATURAL);
         if (args.containsKey(ARG_THEME))
             theme = args.getInt(ARG_THEME);
-    }
-
-    private void initDecimalSeparator() {
-        DecimalFormatSymbols formatSymbols = new DecimalFormatSymbols();
-        decimalSeparator = "" + formatSymbols.getDecimalSeparator();
     }
 
     public static class Builder {
