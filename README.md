@@ -63,7 +63,7 @@ Your parent `Activity` or parent `Fragment` must implement `DecimalPickerHandler
         snpBackspaceColor        :: color of the backspace button
         snpDialogBackground      :: color of the dialog background
 
- 2. Create your own custom theme in `styles.xml`:
+ 2. Create your own custom style in `styles.xml`:
 
   ```xml
     <style name="DecimalPickerTheme" parent="SimpleNumberPickerTheme">

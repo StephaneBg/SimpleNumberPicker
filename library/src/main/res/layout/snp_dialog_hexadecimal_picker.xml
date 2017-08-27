@@ -32,7 +32,7 @@
         android:orientation="horizontal"
         >
 
-        <me.grantland.widget.AutofitTextView
+        <TextView
             android:id="@+id/tv_hex_number"
             style="@style/Number"
             android:layout_width="0dp"
@@ -41,7 +41,7 @@
             android:gravity="center"
             android:maxLines="1"
             android:padding="@dimen/snp_margin_padding_size_medium"
-            app:minTextSize="14sp"
+            app:autoSizeTextType="uniform"
             tools:text="8B56E4FE"
             />
 

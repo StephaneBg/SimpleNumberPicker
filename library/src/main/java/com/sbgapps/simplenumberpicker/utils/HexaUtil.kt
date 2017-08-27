@@ -14,9 +14,13 @@
  * limitations under the License.
  */
 
-package com.sbgapps.simplenumberpicker.decimal;
+package com.sbgapps.simplenumberpicker.utils
 
-public interface DecimalPickerHandler {
+object HexaUtil {
 
-    void onDecimalNumberPicked(int reference, float number);
+    fun intToHex(value: Int, length: Int): String {
+        var ret = Integer.toHexString(value)
+        while (ret.length < length) ret = "0" + ret
+        return ret.toUpperCase()
+    }
 }

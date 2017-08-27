@@ -41,7 +41,7 @@
             />
 
         <TextView
-            android:id="@+id/tv_dec_result"
+            android:id="@+id/decimalTextView"
             style="@style/TextAppearance.AppCompat.Display1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             />
 
         <CheckBox
-            android:id="@+id/cb_natural"
+            android:id="@+id/naturalCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/snp_margin_padding_size_medium"
@@ -60,7 +60,7 @@
             />
 
         <CheckBox
-            android:id="@+id/cb_relative"
+            android:id="@+id/relativeCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/snp_margin_padding_size_medium"
@@ -70,7 +70,7 @@
             />
 
         <Button
-            android:id="@+id/btn_dec_dialog"
+            android:id="@+id/decimalAction"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
             />
 
         <TextView
-            android:id="@+id/tv_hex_result"
+            android:id="@+id/hexaTextView"
             style="@style/TextAppearance.AppCompat.Display1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
             />
 
         <me.bendik.simplerangeview.SimpleRangeView
-            android:id="@+id/range_view"
+            android:id="@+id/rangeView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/snp_margin_padding_size_medium"
@@ -131,7 +131,7 @@
             />
 
         <Button
-            android:id="@+id/btn_hex_dialog"
+            android:id="@+id/hexaAction"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

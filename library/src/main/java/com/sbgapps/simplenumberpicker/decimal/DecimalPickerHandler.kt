@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package com.sbgapps.simplenumberpicker.hex;
+package com.sbgapps.simplenumberpicker.decimal
 
-public interface HexaPickerHandler {
-
-    void onHexaNumberPicked(int reference, String hexNumber);
+interface DecimalPickerHandler {
+    fun onDecimalNumberPicked(reference: Int, number: Float)
 }

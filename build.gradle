@@ -15,28 +15,31 @@
  */
 
 buildscript {
+
+    ext.minSdk = 16
+    ext.targetSdk = 26
+    ext.compileSdk = 26
+    ext.buildTools = '26.0.1'
+    ext.kotlin_version = '1.1.4-2'
+
+    ext.sourceCompatibilityVersion = JavaVersion.VERSION_1_8
+    ext.targetCompatibilityVersion = JavaVersion.VERSION_1_8
+
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
-        classpath 'me.tatarka:gradle-retrolambda:3.5.0'
+        classpath 'com.android.tools.build:gradle:3.0.0-beta3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 allprojects {
     repositories {
         jcenter()
+        google()
     }
-}
-
-ext {
-    minSdk = 16
-    targetSdk = 25
-    compileSdk = 25
-    buildTools = '25.0.2'
-    sourceCompatibilityVersion = JavaVersion.VERSION_1_8
-    targetCompatibilityVersion = JavaVersion.VERSION_1_8
 }
 
 task clean(type: Delete) {

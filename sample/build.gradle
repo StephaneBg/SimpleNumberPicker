@@ -15,7 +15,8 @@
  */
 
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion compileSdk
@@ -30,6 +31,7 @@ android {
         applicationId "com.sbgapps.sample.simplenumberpicker"
         minSdkVersion minSdk
         targetSdkVersion targetSdk
+        vectorDrawables.useSupportLibrary = true
         versionCode 1
         versionName "1.0"
     }
@@ -43,10 +45,10 @@ android {
 }
 
 dependencies {
-    compile project(':SimpleNumberPicker-library')
-    compile supportDependencies.appCompat
-    compile supportDependencies.design
-    compile rangeView
-    compile butterknifeDependencies.butterknife
-    annotationProcessor butterknifeDependencies.butterknifeCompiler
+    api project(':SimpleNumberPicker-library')
+
+    implementation supportDependencies.appCompat
+    implementation supportDependencies.design
+    implementation rangeView
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
 }

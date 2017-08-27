@@ -16,19 +16,12 @@
 
 ext {
     // Versions
-    supportVersion = "25.3.1"
-    rxJavaVersion = "2.0.6"
-    rxAndroidVersion = "2.0.1"
-    butterknifeVersion = "8.5.1"
+    supportVersion = "26.0.1"
     rangeViewVersion = "0.1.1"
-    autoFitTextViewVersion = "0.2.1"
 
     // Packages
     supportPackage = 'com.android.support'
-    reactivePackage = 'io.reactivex.rxjava2'
-    jakeWhartonPackage = 'com.jakewharton'
     rangeViewPackage = 'me.bendik.simplerangeview'
-    autoFitTextViewPackage = "me.grantland"
 
     supportDependencies = [
             appCompat        : buildDependency(supportPackage, 'appcompat-v7', supportVersion),
@@ -41,19 +34,7 @@ ext {
             percent          : buildDependency(supportPackage, 'percent', supportVersion)
     ]
 
-    rxDependencies = [
-            rxJava   : buildDependency(reactivePackage, 'rxjava', rxJavaVersion),
-            rxAndroid: buildDependency(reactivePackage, 'rxandroid', rxAndroidVersion)
-    ]
-
-    butterknifeDependencies = [
-            butterknife        : buildDependency(jakeWhartonPackage, 'butterknife', butterknifeVersion),
-            butterknifeCompiler: buildDependency(jakeWhartonPackage, 'butterknife-compiler', butterknifeVersion)
-    ]
-
     rangeView = buildDependency(rangeViewPackage, 'simplerangeview', rangeViewVersion)
-
-    autoFitTextView = buildDependency(autoFitTextViewPackage, 'autofittextview', autoFitTextViewVersion)
 }
 
 static String buildDependency(String pack, String dependency, String version) {
