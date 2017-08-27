@@ -27,10 +27,8 @@ import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
-
 import com.sbgapps.simplenumberpicker.R
 import com.sbgapps.simplenumberpicker.utils.ThemeUtil
-
 import java.text.DecimalFormatSymbols
 
 class DecimalPickerDialog : DialogFragment() {
@@ -215,7 +213,7 @@ class DecimalPickerDialog : DialogFragment() {
         private var reference = DEFAULT_REFERENCE
         private var relative = true
         private var natural = false
-        private var style = R.style.SimpleNumberPickerTheme
+        private var theme = R.style.SimpleNumberPickerTheme
 
         fun setReference(reference: Int): Builder {
             this.reference = reference
@@ -233,12 +231,12 @@ class DecimalPickerDialog : DialogFragment() {
         }
 
         fun setTheme(theme: Int): Builder {
-            this.style = theme
+            this.theme = theme
             return this
         }
 
         fun create(): DecimalPickerDialog {
-            return newInstance(reference, relative, natural, style)
+            return newInstance(reference, relative, natural, theme)
         }
     }
 
@@ -253,14 +251,19 @@ class DecimalPickerDialog : DialogFragment() {
         private val NB_KEYS = 10
         private val DEFAULT_REFERENCE = 0
 
-        private fun newInstance(reference: Int, relative: Boolean, natural: Boolean, theme: Int): DecimalPickerDialog {
-            val args = Bundle()
-            args.putInt(ARG_REFERENCE, reference)
-            args.putBoolean(ARG_RELATIVE, relative)
-            args.putBoolean(ARG_NATURAL, natural)
-            args.putInt(ARG_STYLE, theme)
+        private fun newInstance(reference: Int,
+                                relative: Boolean,
+                                natural: Boolean,
+                                theme: Int):
+                DecimalPickerDialog {
+
             val fragment = DecimalPickerDialog()
-            fragment.arguments = args
+            fragment.arguments = Bundle().apply {
+                putInt(ARG_REFERENCE, reference)
+                putBoolean(ARG_RELATIVE, relative)
+                putBoolean(ARG_NATURAL, natural)
+                putInt(ARG_STYLE, theme)
+            }
             return fragment
         }
     }

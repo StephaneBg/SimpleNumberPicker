@@ -170,7 +170,7 @@ class HexaPickerDialog : DialogFragment() {
         private var reference = DEFAULT_REFERENCE
         private var minLength = NO_MIN_LENGTH
         private var maxLength = NO_MAX_LENGTH
-        private var style = R.style.SimpleNumberPickerTheme
+        private var theme = R.style.SimpleNumberPickerTheme
 
         fun setReference(reference: Int): Builder {
             this.reference = reference
@@ -188,12 +188,12 @@ class HexaPickerDialog : DialogFragment() {
         }
 
         fun setTheme(theme: Int): Builder {
-            this.style = theme
+            this.theme = theme
             return this
         }
 
         fun create(): HexaPickerDialog {
-            return newInstance(reference, minLength, maxLength, style)
+            return newInstance(reference, minLength, maxLength, theme)
         }
     }
 
@@ -210,14 +210,19 @@ class HexaPickerDialog : DialogFragment() {
         private val NO_MIN_LENGTH = -1
         private val NO_MAX_LENGTH = -1
 
-        private fun newInstance(reference: Int, minLength: Int, maxLength: Int, theme: Int): HexaPickerDialog {
-            val args = Bundle()
-            args.putInt(ARG_REFERENCE, reference)
-            args.putInt(ARG_MIN_LENGTH, minLength)
-            args.putInt(ARG_MAX_LENGTH, maxLength)
-            args.putInt(ARG_STYLE, theme)
+        private fun newInstance(reference: Int,
+                                minLength: Int,
+                                maxLength: Int,
+                                theme: Int):
+                HexaPickerDialog {
+
             val fragment = HexaPickerDialog()
-            fragment.arguments = args
+            fragment.arguments = Bundle().apply {
+                putInt(ARG_REFERENCE, reference)
+                putInt(ARG_MIN_LENGTH, minLength)
+                putInt(ARG_MAX_LENGTH, maxLength)
+                putInt(ARG_STYLE, theme)
+            }
             return fragment
         }
     }
