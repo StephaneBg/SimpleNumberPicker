@@ -90,6 +90,7 @@ class HexaPickerDialog : DialogFragment() {
                 .setPositiveButton(android.R.string.ok) { _, _ ->
                     if (numberTextView.text.isEmpty()) numberTextView.text = "0"
                     val number = numberTextView.text.toString()
+
                     val activity = activity
                     val fragment = parentFragment
                     if (activity is HexaPickerHandler) {

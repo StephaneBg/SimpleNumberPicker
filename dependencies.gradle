@@ -22,6 +22,7 @@ ext {
     // Packages
     supportPackage = 'com.android.support'
     rangeViewPackage = 'me.bendik.simplerangeview'
+    kotlinPackage = 'org.jetbrains.kotlin'
 
     supportDependencies = [
             appCompat        : buildDependency(supportPackage, 'appcompat-v7', supportVersion),
@@ -33,6 +34,8 @@ ext {
             palette          : buildDependency(supportPackage, 'palette-v7', supportVersion),
             percent          : buildDependency(supportPackage, 'percent', supportVersion)
     ]
+
+    kotlinDependency = buildDependency(kotlinPackage, 'kotlin-stdlib-jre8', kotlin_version)
 
     rangeView = buildDependency(rangeViewPackage, 'simplerangeview', rangeViewVersion)
 }

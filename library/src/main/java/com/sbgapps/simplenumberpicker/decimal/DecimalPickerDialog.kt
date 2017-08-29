@@ -96,8 +96,7 @@ class DecimalPickerDialog : DialogFragment() {
                     if (result.isEmpty()) result = "0"
                     result = result.replace(',', '.')
                     if (result == ".") result = "0"
-
-                    val number = java.lang.Float.parseFloat(result)
+                    val number = result.toFloat()
 
                     val activity = activity
                     val fragment = parentFragment
@@ -193,7 +192,10 @@ class DecimalPickerDialog : DialogFragment() {
         backspaceButton.isEnabled = 0 != numberTextView.length()
         if (numberTextView.text.isEmpty()) {
             dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = false
-        } else dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = !(1 == numberTextView.text.length && '-' == numberTextView.text[0])
+        } else {
+            dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled =
+                    !(1 == numberTextView.text.length && '-' == numberTextView.text[0])
+        }
     }
 
     private fun initDecimalSeparator() {

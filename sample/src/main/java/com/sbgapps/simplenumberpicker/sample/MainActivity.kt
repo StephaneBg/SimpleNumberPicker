@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), HexaPickerHandler, DecimalPickerHandle
 
     @SuppressLint("SetTextI18n")
     override fun onDecimalNumberPicked(reference: Int, number: Float) {
-        decimalTextView.text = java.lang.Float.toString(number)
+        decimalTextView.text = "$number"
     }
 
     fun showDecimalPicker() {

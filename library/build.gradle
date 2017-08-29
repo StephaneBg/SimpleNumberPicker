@@ -36,5 +36,5 @@ dependencies {
     implementation supportDependencies.appCompat
     implementation supportDependencies.percent
     implementation supportDependencies.grid
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    implementation kotlinDependency
 }
