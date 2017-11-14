@@ -19,8 +19,8 @@ buildscript {
     ext.minSdk = 16
     ext.targetSdk = 26
     ext.compileSdk = 26
-    ext.buildTools = '26.0.1'
-    ext.kotlin_version = '1.1.4-2'
+    ext.buildTools = '26.0.2'
+    ext.kotlin_version = '1.1.51'
 
     ext.sourceCompatibilityVersion = JavaVersion.VERSION_1_8
     ext.targetCompatibilityVersion = JavaVersion.VERSION_1_8
@@ -30,7 +30,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-beta3'
+        classpath 'com.android.tools.build:gradle:3.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }

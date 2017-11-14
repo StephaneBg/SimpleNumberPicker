@@ -36,5 +36,6 @@ dependencies {
     implementation supportDependencies.appCompat
     implementation supportDependencies.percent
     implementation supportDependencies.grid
+    implementation constraintLayout
     implementation kotlinDependency
 }

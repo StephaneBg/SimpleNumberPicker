@@ -16,11 +16,13 @@
 
 ext {
     // Versions
-    supportVersion = "26.0.1"
+    supportVersion = "26.1.0"
+    constraintVersion = "1.0.2"
     rangeViewVersion = "0.1.1"
 
     // Packages
     supportPackage = 'com.android.support'
+    constraintPackage = 'com.android.support.constraint'
     rangeViewPackage = 'me.bendik.simplerangeview'
     kotlinPackage = 'org.jetbrains.kotlin'
 
@@ -34,6 +36,8 @@ ext {
             palette          : buildDependency(supportPackage, 'palette-v7', supportVersion),
             percent          : buildDependency(supportPackage, 'percent', supportVersion)
     ]
+
+    constraintLayout = buildDependency(constraintPackage, 'constraint-layout', constraintVersion)
 
     kotlinDependency = buildDependency(kotlinPackage, 'kotlin-stdlib-jre8', kotlin_version)
 
