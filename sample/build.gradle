@@ -45,10 +45,11 @@ android {
 }
 
 dependencies {
-    api project(':SimpleNumberPicker-library')
+    implementation project(':SimpleNumberPicker-library')
+//    implementation 'com.github.StephaneBg:SimpleNumberPicker:1.4'
 
-    implementation supportDependencies.appCompat
-    implementation supportDependencies.design
-    implementation rangeView
-    implementation kotlinDependency
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "com.android.support:design:$supportVersion"
+    implementation "me.bendik.simplerangeview:simplerangeview:$rangeViewVersion"
 }

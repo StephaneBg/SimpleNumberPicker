@@ -16,241 +16,232 @@
   ~ limitations under the License.
   -->
 
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     tools:ignore="HardcodedText"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="92dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+
+    <TextView
+        android:id="@+id/tv_number"
+        style="@style/SnpNumber"
+        android:layout_width="0dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="@dimen/snp_margin_padding_size_medium"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toStartOf="@+id/key_backspace"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="123458"
+        />
+
+    <ImageButton
+        android:id="@+id/key_backspace"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_number"
+        tools:layout_editor_absoluteY="15dp"
+        tools:src="@drawable/snp_ic_backspace_black_24dp"
+        />
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/keyboard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:columnCount="4"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_number"
+        app:orientation="vertical"
+        app:rowCount="4"
         >
 
         <TextView
-            android:id="@+id/tv_hex_number"
-            style="@style/Number"
+            android:id="@+id/key_0"
+            style="@style/SnpKey"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:maxLines="1"
-            android:padding="@dimen/snp_margin_padding_size_medium"
-            app:autoSizeTextType="uniform"
-            tools:text="8B56E4FE"
+            android:layout_height="0dp"
+            android:text="0"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
             />
 
-        <ImageButton
-            android:id="@+id/key_backspace"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/snp_margin_padding_size_medium"
-            tools:src="@drawable/snp_ic_backspace_black_24dp"
+        <TextView
+            android:id="@+id/key_4"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="4"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
             />
-    </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        <TextView
+            android:id="@+id/key_8"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="8"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
 
-        <android.support.percent.PercentFrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+        <TextView
+            android:id="@+id/key_C"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="C"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
 
-            <android.support.v7.widget.GridLayout
-                android:id="@+id/keyboard"
-                app:columnCount="4"
-                app:layout_aspectRatio="100%"
-                app:layout_widthPercent="100%"
-                app:orientation="vertical"
-                app:rowCount="4"
-                >
+        <TextView
+            android:id="@+id/key_1"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="1"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
 
-                <TextView
-                    android:id="@+id/key_0"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="0"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
+        <TextView
+            android:id="@+id/key_5"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="5"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
 
-                <TextView
-                    android:id="@+id/key_4"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="4"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
+        <TextView
+            android:id="@+id/key_9"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="9"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
 
-                <TextView
-                    android:id="@+id/key_8"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="8"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
+        <TextView
+            android:id="@+id/key_D"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="D"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
 
-                <TextView
-                    android:id="@+id/key_C"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="C"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
+        <TextView
+            android:id="@+id/key_2"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="2"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
 
-                <TextView
-                    android:id="@+id/key_1"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="1"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
+        <TextView
+            android:id="@+id/key_6"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="6"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
 
-                <TextView
-                    android:id="@+id/key_5"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="5"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
+        <TextView
+            android:id="@+id/key_A"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="A"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
 
-                <TextView
-                    android:id="@+id/key_9"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="9"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
+        <TextView
+            android:id="@+id/key_E"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="E"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
 
-                <TextView
-                    android:id="@+id/key_D"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="D"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
+        <TextView
+            android:id="@+id/key_3"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="3"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
 
-                <TextView
-                    android:id="@+id/key_2"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="2"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
+        <TextView
+            android:id="@+id/key_7"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="7"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
 
-                <TextView
-                    android:id="@+id/key_6"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="6"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
+        <TextView
+            android:id="@+id/key_B"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="B"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
 
-                <TextView
-                    android:id="@+id/key_A"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="A"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
-
-                <TextView
-                    android:id="@+id/key_E"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="E"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
-
-                <TextView
-                    android:id="@+id/key_3"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="3"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
-
-                <TextView
-                    android:id="@+id/key_7"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="7"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
-
-                <TextView
-                    android:id="@+id/key_B"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="B"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
-
-                <TextView
-                    android:id="@+id/key_F"
-                    style="@style/Key"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="F"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill"
-                    app:layout_rowWeight="1"
-                    />
-            </android.support.v7.widget.GridLayout>
-        </android.support.percent.PercentFrameLayout>
-    </ScrollView>
-</LinearLayout>
+        <TextView
+            android:id="@+id/key_F"
+            style="@style/SnpKey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="F"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            />
+    </android.support.v7.widget.GridLayout>
+</android.support.constraint.ConstraintLayout>

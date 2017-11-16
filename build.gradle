@@ -16,19 +16,28 @@
 
 buildscript {
 
-    ext.minSdk = 16
-    ext.targetSdk = 26
-    ext.compileSdk = 26
-    ext.buildTools = '26.0.2'
-    ext.kotlin_version = '1.1.51'
+    ext {
+        // Project
+        minSdk = 16
+        targetSdk = 26
+        compileSdk = 26
+        buildTools = '26.0.2'
+        kotlin_version = '1.1.60'
 
-    ext.sourceCompatibilityVersion = JavaVersion.VERSION_1_8
-    ext.targetCompatibilityVersion = JavaVersion.VERSION_1_8
+        sourceCompatibilityVersion = JavaVersion.VERSION_1_8
+        targetCompatibilityVersion = JavaVersion.VERSION_1_8
+
+        // Dependencies
+        supportVersion = "26.1.0"
+        constraintVersion = "1.0.2"
+        rangeViewVersion = "0.1.1"
+    }
 
     repositories {
         jcenter()
         google()
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -39,11 +48,10 @@ allprojects {
     repositories {
         jcenter()
         google()
+        maven { url "https://jitpack.io" }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-apply from: "./dependencies.gradle"

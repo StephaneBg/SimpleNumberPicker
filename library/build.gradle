@@ -33,9 +33,8 @@ android {
 }
 
 dependencies {
-    implementation supportDependencies.appCompat
-    implementation supportDependencies.percent
-    implementation supportDependencies.grid
-    implementation constraintLayout
-    implementation kotlinDependency
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "com.android.support:gridlayout-v7:$supportVersion"
+    implementation "com.android.support.constraint:constraint-layout:$constraintVersion"
 }

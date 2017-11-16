@@ -61,7 +61,7 @@ class HexaPickerDialog : DialogFragment() {
         // Init number
         var color = attributes.getColor(R.styleable.SimpleNumberPicker_snpKeyColor,
                 ContextCompat.getColor(context, android.R.color.secondary_text_light))
-        numberTextView = view.findViewById(R.id.tv_hex_number)
+        numberTextView = view.findViewById(R.id.tv_number)
         numberTextView.setTextColor(color)
         if (savedInstanceState?.containsKey(ARG_SAVED_VALUE) == true)
             numberTextView.text = savedInstanceState.getString(ARG_SAVED_VALUE)

@@ -19,11 +19,11 @@
 
     <style name="SimpleNumberPickerTheme" parent="Theme.AppCompat.Light.Dialog.Alert"/>
 
-    <style name="Number" parent="TextAppearance.AppCompat.Display3">
+    <style name="SnpNumber" parent="TextAppearance.AppCompat.Display3">
         <item name="android:fontFamily">sans-serif-thin</item>
     </style>
 
-    <style name="Key" parent="TextAppearance.AppCompat.Display1">
+    <style name="SnpKey" parent="TextAppearance.AppCompat.Display1">
         <item name="android:fontFamily">sans-serif-thin</item>
         <item name="android:background">?selectableItemBackgroundBorderless</item>
         <item name="android:gravity">center</item>
