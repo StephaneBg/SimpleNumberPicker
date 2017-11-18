@@ -20,8 +20,8 @@ And add the dependencies
 ```
 	dependencies {
 	        implementation 'com.github.StephaneBg:SimpleNumberPicker:{latest-version}'
-					implementation "com.android.support:gridlayout-v7:$supportVersion"
-			    implementation "com.android.support.constraint:constraint-layout:$constraintVersion"
+		implementation "com.android.support:gridlayout-v7:$supportVersion"
+		implementation "com.android.support.constraint:constraint-layout:$constraintVersion"
 	}
 ```
 
