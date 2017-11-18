@@ -16,10 +16,12 @@ Add the JitPack repository in your build.gradle at the end of repositories:
 		}
 	}
 ```
-And add the dependency
+And add the dependencies
 ```
 	dependencies {
-	        compile 'com.github.StephaneBg:SimpleNumberPicker:{latest-version}'
+	        implementation 'com.github.StephaneBg:SimpleNumberPicker:{latest-version}'
+					implementation "com.android.support:gridlayout-v7:$supportVersion"
+			    implementation "com.android.support.constraint:constraint-layout:$constraintVersion"
 	}
 ```
 
