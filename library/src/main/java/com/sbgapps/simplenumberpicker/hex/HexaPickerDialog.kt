@@ -73,8 +73,7 @@ class HexaPickerDialog : DialogFragment() {
         backspaceButton.setImageDrawable(
                 ThemeUtil.makeSelector(context, R.drawable.snp_ic_backspace_black_24dp, color))
         backspaceButton.setOnClickListener {
-            val number = numberTextView.text
-                    .subSequence(0, numberTextView.text.length - 1)
+            val number = numberTextView.text.subSequence(0, numberTextView.text.length - 1)
             numberTextView.text = number
             onNumberChanged()
         }

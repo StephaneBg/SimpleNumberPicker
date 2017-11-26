@@ -22,7 +22,7 @@ buildscript {
         targetSdk = 26
         compileSdk = 26
         buildTools = '26.0.2'
-        kotlin_version = '1.1.60'
+        kotlin_version = '1.1.61'
 
         sourceCompatibilityVersion = JavaVersion.VERSION_1_8
         targetCompatibilityVersion = JavaVersion.VERSION_1_8
@@ -39,7 +39,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }

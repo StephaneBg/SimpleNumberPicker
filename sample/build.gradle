@@ -46,7 +46,8 @@ android {
 
 dependencies {
 //    implementation project(':SimpleNumberPicker-library')
-    implementation 'com.github.StephaneBg:SimpleNumberPicker:master-SNAPSHOT'
+//    implementation 'com.github.StephaneBg:SimpleNumberPicker:master-SNAPSHOT'
+    implementation 'com.github.StephaneBg:SimpleNumberPicker:1.5'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$supportVersion"
