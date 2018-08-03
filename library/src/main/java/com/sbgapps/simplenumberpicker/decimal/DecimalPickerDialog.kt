@@ -22,21 +22,22 @@ import android.content.DialogInterface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
-import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import com.sbgapps.simplenumberpicker.R
-import com.sbgapps.simplenumberpicker.utils.ThemeUtil
+import com.sbgapps.simplenumberpicker.utils.color
+import com.sbgapps.simplenumberpicker.utils.getThemeAccentColor
+import com.sbgapps.simplenumberpicker.utils.makeSelector
 import java.text.DecimalFormatSymbols
 
 class DecimalPickerDialog : DialogFragment() {
 
-    lateinit private var dialog: AlertDialog
-    lateinit private var numberTextView: TextView
-    lateinit private var backspaceButton: ImageButton
-    lateinit private var decimalSeparator: String
+    private lateinit var dialog: AlertDialog
+    private lateinit var numberTextView: TextView
+    private lateinit var backspaceButton: ImageButton
+    private lateinit var decimalSeparator: String
 
     private var reference = DEFAULT_REFERENCE
     private var relative = true
@@ -46,36 +47,43 @@ class DecimalPickerDialog : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (null != savedInstanceState) {
+        savedInstanceState?.let {
             assignArguments(savedInstanceState)
-        } else if (null != arguments) {
-            assignArguments(arguments)
+        } ?: run {
+            arguments?.let { assignArguments(it) }
         }
 
         setStyle(DialogFragment.STYLE_NO_TITLE, style)
         isCancelable = false
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "InflateParams")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val attributes = context.obtainStyledAttributes(style, R.styleable.SimpleNumberPicker)
+        val attributes =
+            requireContext().obtainStyledAttributes(style, R.styleable.SimpleNumberPicker)
 
-        val view = activity.layoutInflater.inflate(R.layout.snp_dialog_decimal_picker, null)
+        val view = requireActivity().layoutInflater
+            .inflate(R.layout.snp_dialog_decimal_picker, null)
 
         // Init number
-        var color = attributes.getColor(R.styleable.SimpleNumberPicker_snpKeyColor,
-                ContextCompat.getColor(context, android.R.color.secondary_text_light))
+        var color = attributes.getColor(
+            R.styleable.SimpleNumberPicker_snpKeyColor,
+            requireContext().color(android.R.color.secondary_text_light)
+        )
         numberTextView = view.findViewById(R.id.tv_number)
         numberTextView.setTextColor(color)
         if (savedInstanceState?.containsKey(ARG_SAVED_VALUE) == true)
             numberTextView.text = savedInstanceState.getString(ARG_SAVED_VALUE)
 
         // Init backspace
-        color = attributes.getColor(R.styleable.SimpleNumberPicker_snpBackspaceColor,
-                ContextCompat.getColor(context, android.R.color.secondary_text_light))
+        color = attributes.getColor(
+            R.styleable.SimpleNumberPicker_snpBackspaceColor,
+            requireContext().color(android.R.color.secondary_text_light)
+        )
         backspaceButton = view.findViewById(R.id.key_backspace)
         backspaceButton.setImageDrawable(
-                ThemeUtil.makeSelector(context, R.drawable.snp_ic_backspace_black_24dp, color))
+            makeSelector(requireContext(), R.drawable.snp_ic_backspace_black_24dp, color)
+        )
         backspaceButton.setOnClickListener {
             var number = numberTextView.text.subSequence(0, numberTextView.text.length - 1)
             if (1 == number.length && '-' == number[0]) number = ""
@@ -89,32 +97,35 @@ class DecimalPickerDialog : DialogFragment() {
         }
 
         // Create dialog
-        dialog = AlertDialog.Builder(context, theme)
-                .setView(view)
-                .setPositiveButton(android.R.string.ok) { _, _ ->
-                    var result = numberTextView.text.toString()
-                    if (result.isEmpty()) result = "0"
-                    result = result.replace(',', '.')
-                    if (result == ".") result = "0"
-                    val number = result.toFloat()
+        dialog = AlertDialog.Builder(requireContext(), theme)
+            .setView(view)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                var result = numberTextView.text.toString()
+                if (result.isEmpty()) result = "0"
+                result = result.replace(',', '.')
+                if (result == ".") result = "0"
+                val number = result.toFloat()
 
-                    val activity = activity
-                    val fragment = parentFragment
-                    if (activity is DecimalPickerHandler) {
-                        val handler = activity as DecimalPickerHandler
-                        handler.onDecimalNumberPicked(reference, number)
-                    } else if (fragment is DecimalPickerHandler) {
-                        val handler = fragment as DecimalPickerHandler
-                        handler.onDecimalNumberPicked(reference, number)
+                val activity = activity
+                val fragment = parentFragment
+                when {
+                    activity is DecimalPickerHandler -> {
+                        activity.onDecimalNumberPicked(reference, number)
                     }
-                    dismiss()
+                    fragment is DecimalPickerHandler -> {
+                        fragment.onDecimalNumberPicked(reference, number)
+                    }
                 }
-                .setNegativeButton(android.R.string.cancel) { _, _ -> dismiss() }
-                .create()
+                dismiss()
+            }
+            .setNegativeButton(android.R.string.cancel) { _, _ -> dismiss() }
+            .create()
 
         // Init dialog
-        color = attributes.getColor(R.styleable.SimpleNumberPicker_snpDialogBackground,
-                ContextCompat.getColor(context, android.R.color.white))
+        color = attributes.getColor(
+            R.styleable.SimpleNumberPicker_snpDialogBackground,
+            requireContext().color(android.R.color.white)
+        )
         dialog.window?.setBackgroundDrawable(ColorDrawable(color))
 
         // Init keys
@@ -126,8 +137,9 @@ class DecimalPickerDialog : DialogFragment() {
         }
 
         color = attributes.getColor(
-                R.styleable.SimpleNumberPicker_snpKeyColor,
-                ThemeUtil.getThemeAccentColor(context))
+            R.styleable.SimpleNumberPicker_snpKeyColor,
+            getThemeAccentColor(requireContext())
+        )
         val ids = resources.obtainTypedArray(R.array.snp_key_ids)
         for (i in 0 until NB_KEYS) {
             val key = view.findViewById<TextView>(ids.getResourceId(i, -1))
@@ -140,10 +152,10 @@ class DecimalPickerDialog : DialogFragment() {
         val sign = view.findViewById<TextView>(R.id.key_sign)
         if (relative) {
             sign.setTextColor(color)
-            sign.setOnClickListener { v ->
+            sign.setOnClickListener { _ ->
                 val number = numberTextView.text.toString()
                 if (number.startsWith("-")) numberTextView.text = number.substring(1)
-                else numberTextView.text = "-" + number
+                else numberTextView.text = "-$number"
                 onNumberChanged()
             }
         } else {
@@ -158,7 +170,7 @@ class DecimalPickerDialog : DialogFragment() {
         } else {
             separator.text = decimalSeparator
             separator.setTextColor(color)
-            separator.setOnClickListener { v ->
+            separator.setOnClickListener { _ ->
                 if (numberTextView.text.toString().contains(decimalSeparator)) return@setOnClickListener
                 val number = numberTextView.text.toString()
                 numberTextView.text = number + decimalSeparator
@@ -244,29 +256,29 @@ class DecimalPickerDialog : DialogFragment() {
 
     companion object {
 
-        private val ARG_REFERENCE = "ARG_REFERENCE"
-        private val ARG_RELATIVE = "ARG_RELATIVE"
-        private val ARG_NATURAL = "ARG_NATURAL"
-        private val ARG_STYLE = "ARG_STYLE"
-        private val ARG_SAVED_VALUE = "ARG_SAVED_VALUE"
+        private const val ARG_REFERENCE = "ARG_REFERENCE"
+        private const val ARG_RELATIVE = "ARG_RELATIVE"
+        private const val ARG_NATURAL = "ARG_NATURAL"
+        private const val ARG_STYLE = "ARG_STYLE"
+        private const val ARG_SAVED_VALUE = "ARG_SAVED_VALUE"
 
-        private val NB_KEYS = 10
-        private val DEFAULT_REFERENCE = 0
+        private const val NB_KEYS = 10
+        private const val DEFAULT_REFERENCE = 0
 
-        private fun newInstance(reference: Int,
-                                relative: Boolean,
-                                natural: Boolean,
-                                theme: Int):
-                DecimalPickerDialog {
-
-            val fragment = DecimalPickerDialog()
-            fragment.arguments = Bundle().apply {
-                putInt(ARG_REFERENCE, reference)
-                putBoolean(ARG_RELATIVE, relative)
-                putBoolean(ARG_NATURAL, natural)
-                putInt(ARG_STYLE, theme)
+        private fun newInstance(
+            reference: Int,
+            relative: Boolean,
+            natural: Boolean,
+            theme: Int
+        ): DecimalPickerDialog {
+            return DecimalPickerDialog().apply {
+                arguments = Bundle().apply {
+                    putInt(ARG_REFERENCE, reference)
+                    putBoolean(ARG_RELATIVE, relative)
+                    putBoolean(ARG_NATURAL, natural)
+                    putInt(ARG_STYLE, theme)
+                }
             }
-            return fragment
         }
     }
 }

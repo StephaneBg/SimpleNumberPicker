@@ -18,23 +18,23 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion compileSdk
-    buildToolsVersion buildTools
+    buildToolsVersion Android.buildToolsVersion
+    compileSdkVersion Android.compileSdkVersion
 
     compileOptions {
-        sourceCompatibility sourceCompatibilityVersion
-        targetCompatibility targetCompatibilityVersion
+        sourceCompatibility Versions.java
+        targetCompatibility Versions.java
     }
 
     defaultConfig {
-        minSdkVersion minSdk
-        targetSdkVersion targetSdk
+        minSdkVersion Android.minSdkVersion
+        targetSdkVersion Android.targetSdkVersion
     }
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
-    implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation "com.android.support:gridlayout-v7:$supportVersion"
-    implementation "com.android.support.constraint:constraint-layout:$constraintVersion"
+    implementation Libs.kotlinStd
+    implementation Libs.appcompat
+    implementation Libs.gridlayout
+    implementation Libs.constraintLayout
 }

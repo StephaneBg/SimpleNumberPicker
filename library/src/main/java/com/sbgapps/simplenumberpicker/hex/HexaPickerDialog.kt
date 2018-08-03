@@ -16,24 +16,26 @@
 
 package com.sbgapps.simplenumberpicker.hex
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.DialogInterface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
-import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import com.sbgapps.simplenumberpicker.R
-import com.sbgapps.simplenumberpicker.utils.ThemeUtil
+import com.sbgapps.simplenumberpicker.utils.color
+import com.sbgapps.simplenumberpicker.utils.getThemeAccentColor
+import com.sbgapps.simplenumberpicker.utils.makeSelector
 
 class HexaPickerDialog : DialogFragment() {
 
-    lateinit private var dialog: AlertDialog
-    lateinit private var numberTextView: TextView
-    lateinit private var backspaceButton: ImageButton
+    private lateinit var dialog: AlertDialog
+    private lateinit var numberTextView: TextView
+    private lateinit var backspaceButton: ImageButton
 
     private var reference = DEFAULT_REFERENCE
     private var minLength = NO_MIN_LENGTH
@@ -43,35 +45,43 @@ class HexaPickerDialog : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (null != savedInstanceState) {
+        savedInstanceState?.let {
             assignArguments(savedInstanceState)
-        } else if (null != arguments) {
-            assignArguments(arguments)
+        } ?: run {
+            arguments?.let { assignArguments(it) }
         }
 
         setStyle(DialogFragment.STYLE_NO_TITLE, style)
         isCancelable = false
     }
 
+    @SuppressLint("InflateParams")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val attributes = context.obtainStyledAttributes(style, R.styleable.SimpleNumberPicker)
+        val attributes =
+            requireContext().obtainStyledAttributes(style, R.styleable.SimpleNumberPicker)
 
-        val view = activity.layoutInflater.inflate(R.layout.snp_dialog_hexadecimal_picker, null)
+        val view = requireActivity().layoutInflater
+            .inflate(R.layout.snp_dialog_hexadecimal_picker, null)
 
         // Init number
-        var color = attributes.getColor(R.styleable.SimpleNumberPicker_snpKeyColor,
-                ContextCompat.getColor(context, android.R.color.secondary_text_light))
+        var color = attributes.getColor(
+            R.styleable.SimpleNumberPicker_snpKeyColor,
+            requireContext().color(android.R.color.secondary_text_light)
+        )
         numberTextView = view.findViewById(R.id.tv_number)
         numberTextView.setTextColor(color)
         if (savedInstanceState?.containsKey(ARG_SAVED_VALUE) == true)
             numberTextView.text = savedInstanceState.getString(ARG_SAVED_VALUE)
 
         // Init backspace
-        color = attributes.getColor(R.styleable.SimpleNumberPicker_snpBackspaceColor,
-                ContextCompat.getColor(context, android.R.color.secondary_text_light))
+        color = attributes.getColor(
+            R.styleable.SimpleNumberPicker_snpBackspaceColor,
+            requireContext().color(android.R.color.secondary_text_light)
+        )
         backspaceButton = view.findViewById(R.id.key_backspace)
         backspaceButton.setImageDrawable(
-                ThemeUtil.makeSelector(context, R.drawable.snp_ic_backspace_black_24dp, color))
+            makeSelector(requireContext(), R.drawable.snp_ic_backspace_black_24dp, color)
+        )
         backspaceButton.setOnClickListener {
             val number = numberTextView.text.subSequence(0, numberTextView.text.length - 1)
             numberTextView.text = number
@@ -84,29 +94,32 @@ class HexaPickerDialog : DialogFragment() {
         }
 
         // Create dialog
-        dialog = AlertDialog.Builder(context, style)
-                .setView(view)
-                .setPositiveButton(android.R.string.ok) { _, _ ->
-                    if (numberTextView.text.isEmpty()) numberTextView.text = "0"
-                    val number = numberTextView.text.toString()
+        dialog = AlertDialog.Builder(requireContext(), style)
+            .setView(view)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                if (numberTextView.text.isEmpty()) numberTextView.text = "0"
+                val number = numberTextView.text.toString()
 
-                    val activity = activity
-                    val fragment = parentFragment
-                    if (activity is HexaPickerHandler) {
-                        val handler = activity as HexaPickerHandler
-                        handler.onHexaNumberPicked(reference, number)
-                    } else if (fragment is HexaPickerHandler) {
-                        val handler = fragment as HexaPickerHandler
-                        handler.onHexaNumberPicked(reference, number)
+                val activity = activity
+                val fragment = parentFragment
+                when {
+                    activity is HexaPickerHandler -> {
+                        activity.onHexaNumberPicked(reference, number)
                     }
-                    dismiss()
+                    fragment is HexaPickerHandler -> {
+                        fragment.onHexaNumberPicked(reference, number)
+                    }
                 }
-                .setNegativeButton(android.R.string.cancel) { _, _ -> dismiss() }
-                .create()
+                dismiss()
+            }
+            .setNegativeButton(android.R.string.cancel) { _, _ -> dismiss() }
+            .create()
 
         // Init dialog
-        color = attributes.getColor(R.styleable.SimpleNumberPicker_snpDialogBackground,
-                ContextCompat.getColor(context, android.R.color.white))
+        color = attributes.getColor(
+            R.styleable.SimpleNumberPicker_snpDialogBackground,
+            requireContext().color(android.R.color.white)
+        )
         dialog.window?.setBackgroundDrawable(ColorDrawable(color))
 
         // Init keys
@@ -120,8 +133,9 @@ class HexaPickerDialog : DialogFragment() {
         }
 
         color = attributes.getColor(
-                R.styleable.SimpleNumberPicker_snpKeyColor,
-                ThemeUtil.getThemeAccentColor(context))
+            R.styleable.SimpleNumberPicker_snpKeyColor,
+            getThemeAccentColor(requireContext())
+        )
         val ids = resources.obtainTypedArray(R.array.snp_key_ids)
         for (i in 0 until NB_KEYS) {
             val key = view.findViewById<TextView>(ids.getResourceId(i, -1))
@@ -155,7 +169,8 @@ class HexaPickerDialog : DialogFragment() {
         backspaceButton.isEnabled = 0 != numberTextView.length()
         if (numberTextView.text.isEmpty()) {
             dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = false
-        } else dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = !(NO_MIN_LENGTH != minLength && numberTextView.length() < minLength)
+        } else dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled =
+                !(NO_MIN_LENGTH != minLength && numberTextView.length() < minLength)
     }
 
     private fun assignArguments(args: Bundle) {
@@ -199,31 +214,31 @@ class HexaPickerDialog : DialogFragment() {
 
     companion object {
 
-        private val ARG_REFERENCE = "ARG_REFERENCE"
-        private val ARG_MIN_LENGTH = "ARG_MIN_LENGTH"
-        private val ARG_MAX_LENGTH = "ARG_MAX_LENGTH"
-        private val ARG_STYLE = "ARG_STYLE"
-        private val ARG_SAVED_VALUE = "ARG_SAVED_VALUE"
+        private const val ARG_REFERENCE = "ARG_REFERENCE"
+        private const val ARG_MIN_LENGTH = "ARG_MIN_LENGTH"
+        private const val ARG_MAX_LENGTH = "ARG_MAX_LENGTH"
+        private const val ARG_STYLE = "ARG_STYLE"
+        private const val ARG_SAVED_VALUE = "ARG_SAVED_VALUE"
 
-        private val NB_KEYS = 16
-        private val DEFAULT_REFERENCE = 0
-        private val NO_MIN_LENGTH = -1
-        private val NO_MAX_LENGTH = -1
+        private const val NB_KEYS = 16
+        private const val DEFAULT_REFERENCE = 0
+        private const val NO_MIN_LENGTH = -1
+        private const val NO_MAX_LENGTH = -1
 
-        private fun newInstance(reference: Int,
-                                minLength: Int,
-                                maxLength: Int,
-                                theme: Int):
-                HexaPickerDialog {
-
-            val fragment = HexaPickerDialog()
-            fragment.arguments = Bundle().apply {
-                putInt(ARG_REFERENCE, reference)
-                putInt(ARG_MIN_LENGTH, minLength)
-                putInt(ARG_MAX_LENGTH, maxLength)
-                putInt(ARG_STYLE, theme)
+        private fun newInstance(
+            reference: Int,
+            minLength: Int,
+            maxLength: Int,
+            theme: Int
+        ): HexaPickerDialog {
+            return HexaPickerDialog().apply {
+                arguments = Bundle().apply {
+                    putInt(ARG_REFERENCE, reference)
+                    putInt(ARG_MIN_LENGTH, minLength)
+                    putInt(ARG_MAX_LENGTH, maxLength)
+                    putInt(ARG_STYLE, theme)
+                }
             }
-            return fragment
         }
     }
 }

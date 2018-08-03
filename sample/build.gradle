@@ -15,25 +15,25 @@
  */
 
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion compileSdk
-    buildToolsVersion buildTools
+    buildToolsVersion Android.buildToolsVersion
+    compileSdkVersion Android.compileSdkVersion
 
     compileOptions {
-        sourceCompatibility sourceCompatibilityVersion
-        targetCompatibility targetCompatibilityVersion
+        sourceCompatibility Versions.java
+        targetCompatibility Versions.java
     }
 
     defaultConfig {
-        applicationId "com.sbgapps.sample.simplenumberpicker"
-        minSdkVersion minSdk
-        targetSdkVersion targetSdk
+        minSdkVersion Android.minSdkVersion
+        targetSdkVersion Android.targetSdkVersion
+        applicationId Android.applicationId
+        versionCode Android.versionCode
+        versionName Android.versionName
         vectorDrawables.useSupportLibrary = true
-        versionCode 1
-        versionName "1.0"
     }
 
     buildTypes {
@@ -45,14 +45,12 @@ android {
 }
 
 dependencies {
-//    implementation project(':SimpleNumberPicker-library')
-//    implementation 'com.github.StephaneBg:SimpleNumberPicker:master-SNAPSHOT'
-    implementation 'com.github.StephaneBg:SimpleNumberPicker:1.5'
+    implementation project(':SimpleNumberPicker-library')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
-    implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation "com.android.support:design:$supportVersion"
-    implementation "com.android.support:gridlayout-v7:$supportVersion"
-    implementation "com.android.support.constraint:constraint-layout:$constraintVersion"
-    implementation "me.bendik.simplerangeview:simplerangeview:$rangeViewVersion"
+    implementation Libs.kotlinStd
+    implementation Libs.appcompat
+    implementation Libs.design
+    implementation Libs.gridlayout
+    implementation Libs.constraintLayout
+    implementation Libs.rangeView
 }
