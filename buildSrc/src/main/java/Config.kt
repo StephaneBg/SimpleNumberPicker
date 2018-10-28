@@ -20,8 +20,11 @@ object Versions {
     val java = JavaVersion.VERSION_1_8
     const val androidGradle = "3.2.1"
     const val kotlin = "1.2.70"
-    const val supportLibrary = "28.0.0"
+    const val appcompat = "1.0.0"
+    const val vectorDrawable = "1.0.0"
     const val constraintLayout = "1.1.3"
+    const val gridlayout = "1.0.0"
+    const val material = "1.0.0"
     const val rangeView = "0.1.1"
 }
 
@@ -42,11 +45,10 @@ object Android {
 
 object Libs {
     val kotlinStd = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
-    val appcompat = "com.android.support:appcompat-v7:${Versions.supportLibrary}"
-    val design = "com.android.support:design:${Versions.supportLibrary}"
-    val vectorDrawable = "com.android.support:support-vector-drawable:${Versions.supportLibrary}"
-    val gridlayout = "com.android.support:gridlayout-v7:${Versions.supportLibrary}"
-    val constraintLayout =
-        "com.android.support.constraint:constraint-layout:${Versions.constraintLayout}"
+    val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
+    val vectorDrawable = "androidx.vectordrawable:vectordrawable:${Versions.vectorDrawable}"
+    val material = "com.google.android.material:material:${Versions.material}"
+    val gridlayout = "androidx.gridlayout:gridlayout:${Versions.gridlayout}"
+    val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     val rangeView = "me.bendik.simplerangeview:simplerangeview:${Versions.rangeView}"
 }

@@ -16,7 +16,7 @@
   ~ limitations under the License.
   -->
 
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -24,7 +24,6 @@
     android:layout_height="wrap_content"
     tools:ignore="HardcodedText"
     >
-
 
     <TextView
         android:id="@+id/tv_number"
@@ -48,6 +47,7 @@
         android:layout_width="88dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
+        android:importantForAccessibility="no"
         app:layout_constraintBottom_toBottomOf="@+id/tv_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_number"
@@ -55,7 +55,7 @@
         tools:src="@drawable/snp_ic_backspace_black_24dp"
         />
 
-    <android.support.v7.widget.GridLayout
+    <androidx.gridlayout.widget.GridLayout
         android:id="@+id/keyboard"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -200,5 +200,5 @@
             app:layout_rowWeight="1"
             tools:text="."
             />
-    </android.support.v7.widget.GridLayout>
-</android.support.constraint.ConstraintLayout>
+    </androidx.gridlayout.widget.GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

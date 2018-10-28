@@ -16,7 +16,8 @@
 
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme"
+        parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
@@ -35,7 +36,8 @@
         <item name="buttonBarNegativeButtonStyle">@style/AlertDialogButton.Negative</item>
     </style>
 
-    <style name="AlertDialogButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog"/>
+    <style name="AlertDialogButton"
+        parent="Widget.MaterialComponents.Button.TextButton" />
 
     <style name="AlertDialogButton.Positive">
         <item name="android:textColor">?android:attr/textColorSecondary</item>

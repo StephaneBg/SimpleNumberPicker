@@ -17,14 +17,19 @@
 
 <resources>
 
-    <style name="SimpleNumberPickerTheme" parent="Theme.AppCompat.Light.Dialog.Alert"/>
+    <style name="SimpleNumberPickerTheme"
+        parent="Theme.MaterialComponents.Light.Dialog.Alert" />
 
-    <style name="SnpNumber" parent="TextAppearance.AppCompat.Display3">
+    <style name="SnpNumber"
+        parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="fontFamily">sans-serif-thin</item>
     </style>
 
-    <style name="SnpKey" parent="TextAppearance.AppCompat.Display1">
+    <style name="SnpKey"
+        parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="fontFamily">sans-serif-thin</item>
         <item name="android:background">?selectableItemBackgroundBorderless</item>
         <item name="android:gravity">center</item>
     </style>

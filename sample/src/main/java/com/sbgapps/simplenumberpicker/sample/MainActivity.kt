@@ -18,7 +18,7 @@ package com.sbgapps.simplenumberpicker.sample
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 
 import com.sbgapps.simplenumberpicker.decimal.DecimalPickerDialog
 import com.sbgapps.simplenumberpicker.decimal.DecimalPickerHandler
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(), HexaPickerHandler, DecimalPickerHandle
         decimalTextView.text = "$number"
     }
 
-    fun showDecimalPicker() {
+    private fun showDecimalPicker() {
         DecimalPickerDialog.Builder()
                 .setReference(REF_DEC_DIALOG)
                 .setNatural(naturalCheckBox.isChecked)
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity(), HexaPickerHandler, DecimalPickerHandle
         hexaTextView.text = hexNumber
     }
 
-    fun showHexDialog() {
+    private fun showHexDialog() {
         HexaPickerDialog.Builder()
                 .setReference(REF_HEX_DIALOG)
                 .setMinLength(rangeView.start + 1)
@@ -67,11 +67,9 @@ class MainActivity : AppCompatActivity(), HexaPickerHandler, DecimalPickerHandle
     }
 
     companion object {
-
-        private val REF_DEC_DIALOG = 1
-        private val REF_HEX_DIALOG = 2
-
-        private val TAG_DEC_DIALOG = "TAG_DEC_DIALOG"
-        private val TAG_HEX_DIALOG = "TAG_HEX_DIALOG"
+        private const val REF_DEC_DIALOG = 1
+        private const val REF_HEX_DIALOG = 2
+        private const val TAG_DEC_DIALOG = "TAG_DEC_DIALOG"
+        private const val TAG_HEX_DIALOG = "TAG_HEX_DIALOG"
     }
 }

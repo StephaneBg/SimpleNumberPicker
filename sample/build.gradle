@@ -48,9 +48,6 @@ dependencies {
     implementation project(':SimpleNumberPicker-library')
 
     implementation Libs.kotlinStd
-    implementation Libs.appcompat
-    implementation Libs.design
-    implementation Libs.gridlayout
-    implementation Libs.constraintLayout
+    implementation Libs.material
     implementation Libs.rangeView
 }
