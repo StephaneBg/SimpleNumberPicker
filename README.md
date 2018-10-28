@@ -19,9 +19,7 @@ Add the JitPack repository in your build.gradle at the end of repositories:
 And add the dependencies
 ```
 	dependencies {
-	        implementation 'com.github.StephaneBg:SimpleNumberPicker:{latest-version}'
-		implementation "com.android.support:gridlayout-v7:$supportVersion"
-		implementation "com.android.support.constraint:constraint-layout:$constraintVersion"
+	    implementation 'com.github.StephaneBg:SimpleNumberPicker:{latest-version}'
 	}
 ```
 
@@ -31,26 +29,26 @@ And add the dependencies
 
 To display a decimal picker `DialogFragment`:
 ``` java
-        new DecimalPickerDialog.Builder()
+        DecimalPickerDialog.Builder()
                 .setReference(REF_DEC_DIALOG) // Optional
                 .setNatural(false) // Optional - false is default
                 .setRelative(true) // Optional - true is default
                 .setTheme(R.style.DecimalPickerTheme) // Optional
                 .create()
-                .show(getSupportFragmentManager(), TAG_DEC_DIALOG);
+                .show(getSupportFragmentManager(), TAG_DEC_DIALOG)
 ```
 
 ### HexaPickerDialog
 
 To display a hexadecimal picker `DialogFragment`:
 ``` java
-        new HexaPickerDialog.Builder()
+        HexaPickerDialog.Builder()
                 .setReference(REF_HEX_DIALOG) // Optional
                 .setMinLength(2) // Optional - Default is none
                 .setMaxLength(8) // Optional - Default is none
                 .setTheme(R.style.HexaPickerTheme) // Optional
                 .create()
-                .show(getSupportFragmentManager(), TAG_HEX_DIALOG);
+                .show(getSupportFragmentManager(), TAG_HEX_DIALOG)
 ```
 
 ## Handler
@@ -92,7 +90,7 @@ If you've fixed a bug or have a feature you've added, just create a pull request
 Please send a pull request if you would like to be added here.
 
 ## License
-Copyright 2017 Stéphane Baiget
+Copyright 2018 Stéphane Baiget
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

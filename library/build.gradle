@@ -33,9 +33,9 @@ android {
 }
 
 dependencies {
-    api Libs.kotlinStd
+    implementation Libs.kotlinStd
+
     api Libs.appcompat
-    api Libs.gridlayout
     api Libs.constraintLayout
     api Libs.material
 }

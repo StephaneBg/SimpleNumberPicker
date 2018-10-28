@@ -30,7 +30,7 @@
         parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:fontFamily">sans-serif-thin</item>
         <item name="fontFamily">sans-serif-thin</item>
-        <item name="android:background">?selectableItemBackgroundBorderless</item>
+        <item name="android:background">?selectableItemBackground</item>
         <item name="android:gravity">center</item>
     </style>
 </resources>

@@ -23,7 +23,6 @@ object Versions {
     const val appcompat = "1.0.0"
     const val vectorDrawable = "1.0.0"
     const val constraintLayout = "1.1.3"
-    const val gridlayout = "1.0.0"
     const val material = "1.0.0"
     const val rangeView = "0.1.1"
 }
@@ -48,7 +47,6 @@ object Libs {
     val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     val vectorDrawable = "androidx.vectordrawable:vectordrawable:${Versions.vectorDrawable}"
     val material = "com.google.android.material:material:${Versions.material}"
-    val gridlayout = "androidx.gridlayout:gridlayout:${Versions.gridlayout}"
     val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     val rangeView = "me.bendik.simplerangeview:simplerangeview:${Versions.rangeView}"
 }
