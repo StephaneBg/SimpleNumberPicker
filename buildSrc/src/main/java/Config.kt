@@ -19,7 +19,7 @@ import org.gradle.api.JavaVersion
 object Versions {
     val java = JavaVersion.VERSION_1_8
     const val androidGradle = "3.2.1"
-    const val kotlin = "1.2.70"
+    const val kotlin = "1.3.0"
     const val appcompat = "1.0.0"
     const val vectorDrawable = "1.0.0"
     const val constraintLayout = "1.1.3"

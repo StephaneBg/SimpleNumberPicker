@@ -17,9 +17,17 @@ Add the JitPack repository in your build.gradle at the end of repositories:
 	}
 ```
 And add the dependencies
+#### AndroidX
 ```
 	dependencies {
-	    implementation 'com.github.StephaneBg:SimpleNumberPicker:{latest-version}'
+	    implementation 'com.github.StephaneBg:SimpleNumberPicker:2.0'
+	}
+```
+
+#### Support Library
+```
+	dependencies {
+	    implementation 'com.github.StephaneBg:SimpleNumberPicker:1.5'
 	}
 ```
 
