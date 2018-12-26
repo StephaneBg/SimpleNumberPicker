@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.config.KotlinCompilerVersion
+
 /*
  * Copyright 2017 Stéphane Baiget
  *
@@ -14,26 +16,29 @@
  * limitations under the License.
  */
 
-buildscript {
+plugins {
+    id("com.android.library")
+    kotlin("android")
+}
 
-    repositories {
-        jcenter()
-        google()
+android {
+    compileSdkVersion(Android.compileSdkVersion)
+
+    compileOptions {
+        sourceCompatibility = Versions.java
+        targetCompatibility = Versions.java
     }
 
-    dependencies {
-        classpath Build.androidGradle
-        classpath Build.kotlinGradlePlugin
+    defaultConfig {
+        minSdkVersion(Android.minSdkVersion)
+        targetSdkVersion(Android.targetSdkVersion)
     }
 }
 
-allprojects {
-    repositories {
-        jcenter()
-        google()
-    }
-}
+dependencies {
+    implementation(kotlin("stdlib", KotlinCompilerVersion.VERSION))
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+    api(Libs.appcompat)
+    api(Libs.constraintLayout)
+    api(Libs.material)
 }

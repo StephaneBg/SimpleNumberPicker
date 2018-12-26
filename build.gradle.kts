@@ -14,28 +14,25 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-
-android {
-    buildToolsVersion Android.buildToolsVersion
-    compileSdkVersion Android.compileSdkVersion
-
-    compileOptions {
-        sourceCompatibility Versions.java
-        targetCompatibility Versions.java
+buildscript {
+    repositories {
+        jcenter()
+        google()
     }
 
-    defaultConfig {
-        minSdkVersion Android.minSdkVersion
-        targetSdkVersion Android.targetSdkVersion
+    dependencies {
+        classpath(Build.androidGradle)
+        classpath(Build.kotlinGradlePlugin)
     }
 }
 
-dependencies {
-    implementation Libs.kotlinStd
+allprojects {
+    repositories {
+        jcenter()
+        google()
+    }
+}
 
-    api Libs.appcompat
-    api Libs.constraintLayout
-    api Libs.material
+tasks.register("clean", Delete::class.java) {
+    delete(rootProject.buildDir)
 }

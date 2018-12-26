@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-include ':SimpleNumberPicker-library', ':SimpleNumberPicker-sample'
+include(":SimpleNumberPicker-library", ":SimpleNumberPicker-sample")
 
-project(':SimpleNumberPicker-library').projectDir = new File('library')
-project(':SimpleNumberPicker-sample').projectDir = new File('sample')
+project(":SimpleNumberPicker-library").projectDir = file("library")
+project(":SimpleNumberPicker-sample").projectDir = file("sample")

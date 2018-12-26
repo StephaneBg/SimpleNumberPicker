@@ -18,8 +18,8 @@ import org.gradle.api.JavaVersion
 
 object Versions {
     val java = JavaVersion.VERSION_1_8
-    const val androidGradle = "3.2.1"
-    const val kotlin = "1.3.0"
+    val androidGradle = "3.3.0-rc03"
+    val kotlin = "1.3.11"
     const val appcompat = "1.0.0"
     const val vectorDrawable = "1.0.0"
     const val constraintLayout = "1.1.3"
@@ -33,13 +33,10 @@ object Build {
 }
 
 object Android {
-    val buildToolsVersion = "28.0.3"
     val minSdkVersion = 16
     val targetSdkVersion = 28
-    val compileSdkVersion = 28
+    val compileSdkVersion = targetSdkVersion
     val applicationId = "com.sbgapps.simplenumberpicker"
-    val versionCode = 1
-    val versionName = "0.1"
 }
 
 object Libs {
