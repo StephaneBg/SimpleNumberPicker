@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.config.KotlinCompilerVersion
-
 /*
  * Copyright 2017 Stéphane Baiget
  *
@@ -36,9 +34,11 @@ android {
 }
 
 dependencies {
-    implementation(kotlin("stdlib", KotlinCompilerVersion.VERSION))
+    api(kotlin("stdlib"))
 
     api(Libs.appcompat)
+    api(Libs.ktx)
+    api(Libs.anko)
     api(Libs.constraintLayout)
     api(Libs.material)
 }

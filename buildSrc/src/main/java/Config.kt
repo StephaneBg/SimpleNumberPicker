@@ -20,11 +20,13 @@ object Versions {
     val java = JavaVersion.VERSION_1_8
     val androidGradle = "3.3.0-rc03"
     val kotlin = "1.3.11"
-    const val appcompat = "1.0.0"
-    const val vectorDrawable = "1.0.0"
-    const val constraintLayout = "1.1.3"
-    const val material = "1.0.0"
-    const val rangeView = "0.1.1"
+    val appcompat = "1.0.0"
+    val vectorDrawable = "1.0.0"
+    val ktx = "1.0.1"
+    val anko = "0.10.8"
+    val constraintLayout = "1.1.3"
+    val material = "1.0.0"
+    val rangeView = "0.1.1"
 }
 
 object Build {
@@ -41,9 +43,11 @@ object Android {
 
 object Libs {
     val kotlinStd = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    val anko = "org.jetbrains.anko:anko-commons:${Versions.anko}"
     val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     val vectorDrawable = "androidx.vectordrawable:vectordrawable:${Versions.vectorDrawable}"
-    val material = "com.google.android.material:material:${Versions.material}"
+    val ktx = "androidx.core:core-ktx:${Versions.ktx}"
     val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    val material = "com.google.android.material:material:${Versions.material}"
     val rangeView = "me.bendik.simplerangeview:simplerangeview:${Versions.rangeView}"
 }

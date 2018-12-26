@@ -16,7 +16,7 @@
   -->
 
 <resources>
-    <color name="color_primary">#66BB6A</color>
-    <color name="color_primary_dark">#43A047</color>
-    <color name="color_accent">#FFA726</color>
+    <color name="green">#66BB6A</color>
+    <color name="green_dark">#43A047</color>
+    <color name="orange">#FFA726</color>
 </resources>

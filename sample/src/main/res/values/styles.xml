@@ -16,11 +16,10 @@
 
 <resources>
 
-    <style name="AppTheme"
-        parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <item name="colorPrimary">@color/color_primary</item>
-        <item name="colorPrimaryDark">@color/color_primary_dark</item>
-        <item name="colorAccent">@color/color_accent</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryDark">@color/green_dark</item>
+        <item name="colorAccent">@color/orange</item>
     </style>
 
     <style name="DecimalPickerTheme" parent="SimpleNumberPickerTheme">
@@ -28,22 +27,11 @@
         <item name="snpNumberColor">@android:color/white</item>
         <item name="snpBackspaceColor">@android:color/white</item>
         <item name="colorAccent">@android:color/white</item>
-        <item name="snpDialogBackground">@color/color_primary</item>
+        <item name="snpDialogBackground">@color/green</item>
     </style>
 
     <style name="HexaPickerTheme" parent="SimpleNumberPickerTheme">
-        <item name="buttonBarPositiveButtonStyle">@style/AlertDialogButton.Positive</item>
-        <item name="buttonBarNegativeButtonStyle">@style/AlertDialogButton.Negative</item>
-    </style>
-
-    <style name="AlertDialogButton"
-        parent="Widget.MaterialComponents.Button.TextButton" />
-
-    <style name="AlertDialogButton.Positive">
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
-    </style>
-
-    <style name="AlertDialogButton.Negative">
-        <item name="android:textColor">@color/color_accent</item>
+        <item name="snpKeyColor">@color/green</item>
+        <item name="colorAccent">@color/green</item>
     </style>
 </resources>

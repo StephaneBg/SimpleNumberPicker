@@ -30,7 +30,7 @@
         >
 
         <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline6"
+            style="?textAppearanceHeadline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/snp_margin_padding_size_medium"
@@ -41,7 +41,7 @@
 
         <TextView
             android:id="@+id/decimalTextView"
-            style="@style/TextAppearance.MaterialComponents.Headline4"
+            style="?textAppearanceHeadline4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -85,7 +85,7 @@
             />
 
         <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline6"
+            style="?textAppearanceHeadline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/snp_margin_padding_size_medium"
@@ -96,7 +96,7 @@
 
         <TextView
             android:id="@+id/hexaTextView"
-            style="@style/TextAppearance.MaterialComponents.Headline4"
+            style="?textAppearanceHeadline4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

@@ -25,11 +25,14 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
+import androidx.core.view.isInvisible
 import androidx.fragment.app.DialogFragment
 import com.sbgapps.simplenumberpicker.R
 import com.sbgapps.simplenumberpicker.utils.color
-import com.sbgapps.simplenumberpicker.utils.getThemeAccentColor
 import com.sbgapps.simplenumberpicker.utils.makeSelector
+import org.jetbrains.anko.colorAttr
+import org.jetbrains.anko.find
 import java.text.DecimalFormatSymbols
 
 class DecimalPickerDialog : DialogFragment() {
@@ -46,13 +49,7 @@ class DecimalPickerDialog : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        savedInstanceState?.let {
-            assignArguments(savedInstanceState)
-        } ?: run {
-            arguments?.let { assignArguments(it) }
-        }
-
+        assignArguments(savedInstanceState ?: arguments)
         setStyle(DialogFragment.STYLE_NO_TITLE, style)
         isCancelable = false
     }
@@ -68,9 +65,9 @@ class DecimalPickerDialog : DialogFragment() {
         // Init number
         var color = attributes.getColor(
             R.styleable.SimpleNumberPicker_snpKeyColor,
-            requireContext().color(android.R.color.secondary_text_light)
+            requireContext().colorAttr(R.attr.colorPrimary)
         )
-        numberTextView = view.findViewById(R.id.tv_number)
+        numberTextView = view.find(R.id.tv_number)
         numberTextView.setTextColor(color)
         if (savedInstanceState?.containsKey(ARG_SAVED_VALUE) == true)
             numberTextView.text = savedInstanceState.getString(ARG_SAVED_VALUE)
@@ -78,9 +75,9 @@ class DecimalPickerDialog : DialogFragment() {
         // Init backspace
         color = attributes.getColor(
             R.styleable.SimpleNumberPicker_snpBackspaceColor,
-            requireContext().color(android.R.color.secondary_text_light)
+            requireContext().colorAttr(R.attr.colorPrimary)
         )
-        backspaceButton = view.findViewById(R.id.key_backspace)
+        backspaceButton = view.find(R.id.key_backspace)
         backspaceButton.setImageDrawable(
             makeSelector(requireContext(), R.drawable.snp_ic_backspace_black_24dp, color)
         )
@@ -106,15 +103,12 @@ class DecimalPickerDialog : DialogFragment() {
                 if (result == ".") result = "0"
                 val number = result.toFloat()
 
-                val activity = activity
+                val fragmentActivity = activity
                 val fragment = parentFragment
-                when {
-                    activity is DecimalPickerHandler -> {
-                        activity.onDecimalNumberPicked(reference, number)
-                    }
-                    fragment is DecimalPickerHandler -> {
-                        fragment.onDecimalNumberPicked(reference, number)
-                    }
+                if (fragmentActivity is DecimalPickerHandler) {
+                    fragmentActivity.onDecimalNumberPicked(reference, number)
+                } else if (fragment is DecimalPickerHandler) {
+                    fragment.onDecimalNumberPicked(reference, number)
                 }
                 dismiss()
             }
@@ -131,50 +125,50 @@ class DecimalPickerDialog : DialogFragment() {
         // Init keys
         val listener = { v: View ->
             val key = v.tag as Int
-            val id = numberTextView.text.toString() + Integer.toString(key)
+            val id = "${numberTextView.text}$key"
             numberTextView.text = id
             onNumberChanged()
         }
 
         color = attributes.getColor(
             R.styleable.SimpleNumberPicker_snpKeyColor,
-            getThemeAccentColor(requireContext())
+            requireContext().colorAttr(R.attr.colorAccent)
         )
         val ids = resources.obtainTypedArray(R.array.snp_key_ids)
         for (i in 0 until NB_KEYS) {
-            val key = view.findViewById<TextView>(ids.getResourceId(i, -1))
+            val key = view.find<TextView>(ids.getResourceId(i, -1))
             key.tag = i
             key.setOnClickListener(listener)
             key.setTextColor(color)
         }
 
         // Init sign
-        val sign = view.findViewById<TextView>(R.id.key_sign)
+        val sign = view.find<TextView>(R.id.key_sign)
         if (relative) {
             sign.setTextColor(color)
             sign.setOnClickListener {
                 val number = numberTextView.text.toString()
-                if (number.startsWith("-")) numberTextView.text = number.substring(1)
+                if (number.startsWith("-")) numberTextView.text = number.drop(1)
                 else numberTextView.text = "-$number"
                 onNumberChanged()
             }
         } else {
-            sign.visibility = View.INVISIBLE
+            sign.isInvisible = true
         }
 
         // Init decimal separator
-        initDecimalSeparator()
-        val separator = view.findViewById<TextView>(R.id.key_point)
+        decimalSeparator = DecimalFormatSymbols().decimalSeparator.toString()
+        val separator = view.find<TextView>(R.id.key_point)
         if (natural) {
-            separator.visibility = View.INVISIBLE
+            separator.isInvisible = true
         } else {
             separator.text = decimalSeparator
             separator.setTextColor(color)
             separator.setOnClickListener {
-                if (numberTextView.text.toString().contains(decimalSeparator)) return@setOnClickListener
-                val number = numberTextView.text.toString()
-                numberTextView.text = number + decimalSeparator
-                onNumberChanged()
+                if (!numberTextView.text.toString().contains(decimalSeparator)) {
+                    numberTextView.text = "${numberTextView.text}$decimalSeparator"
+                    onNumberChanged()
+                }
             }
         }
 
@@ -210,16 +204,11 @@ class DecimalPickerDialog : DialogFragment() {
         }
     }
 
-    private fun initDecimalSeparator() {
-        val formatSymbols = DecimalFormatSymbols()
-        decimalSeparator = "" + formatSymbols.decimalSeparator
-    }
-
-    private fun assignArguments(args: Bundle) {
-        if (args.containsKey(ARG_REFERENCE)) reference = args.getInt(ARG_REFERENCE)
-        if (args.containsKey(ARG_RELATIVE)) relative = args.getBoolean(ARG_RELATIVE)
-        if (args.containsKey(ARG_NATURAL)) natural = args.getBoolean(ARG_NATURAL)
-        if (args.containsKey(ARG_STYLE)) style = args.getInt(ARG_STYLE)
+    private fun assignArguments(args: Bundle?) {
+        if (args?.containsKey(ARG_REFERENCE) == true) reference = args.getInt(ARG_REFERENCE)
+        if (args?.containsKey(ARG_RELATIVE) == true) relative = args.getBoolean(ARG_RELATIVE)
+        if (args?.containsKey(ARG_NATURAL) == true) natural = args.getBoolean(ARG_NATURAL)
+        if (args?.containsKey(ARG_STYLE) == true) style = args.getInt(ARG_STYLE)
     }
 
     class Builder {
@@ -249,9 +238,7 @@ class DecimalPickerDialog : DialogFragment() {
             return this
         }
 
-        fun create(): DecimalPickerDialog {
-            return newInstance(reference, relative, natural, theme)
-        }
+        fun create(): DecimalPickerDialog = newInstance(reference, relative, natural, theme)
     }
 
     companion object {
@@ -270,15 +257,13 @@ class DecimalPickerDialog : DialogFragment() {
             relative: Boolean,
             natural: Boolean,
             theme: Int
-        ): DecimalPickerDialog {
-            return DecimalPickerDialog().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_REFERENCE, reference)
-                    putBoolean(ARG_RELATIVE, relative)
-                    putBoolean(ARG_NATURAL, natural)
-                    putInt(ARG_STYLE, theme)
-                }
-            }
+        ) = DecimalPickerDialog().apply {
+            arguments = bundleOf(
+                ARG_REFERENCE to reference,
+                ARG_RELATIVE to relative,
+                ARG_NATURAL to natural,
+                ARG_STYLE to theme
+            )
         }
     }
 }

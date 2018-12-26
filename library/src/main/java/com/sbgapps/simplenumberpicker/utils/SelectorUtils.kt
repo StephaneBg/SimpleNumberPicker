@@ -18,37 +18,20 @@ package com.sbgapps.simplenumberpicker.utils
 
 import android.content.Context
 import android.graphics.drawable.StateListDrawable
-import android.os.Build
-import android.util.TypedValue
-import androidx.annotation.ColorInt
-import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
-
-@ColorInt
-fun getThemeAccentColor(context: Context): Int {
-    val colorAttr = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        android.R.attr.colorAccent
-    } else {
-        context.resources.getIdentifier("colorAccent", "attr", context.packageName)
-    }
-    val outValue = TypedValue()
-    context.theme.resolveAttribute(colorAttr, outValue, true)
-    return outValue.data
-}
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 
 fun makeSelector(context: Context, drawableResId: Int, color: Int): StateListDrawable {
     val stateListDrawable = StateListDrawable()
     stateListDrawable.setExitFadeDuration(50)
-    var drawable = ContextCompat.getDrawable(context, drawableResId)
-    drawable?.let {
+    VectorDrawableCompat.create(context.resources, drawableResId, null)?.let {
         DrawableCompat.setTint(it, color and 0x40FFFFFF)
-        stateListDrawable.addState(intArrayOf(-android.R.attr.state_enabled), drawable)
+        stateListDrawable.addState(intArrayOf(-android.R.attr.state_enabled), it)
     }
 
-    drawable = ContextCompat.getDrawable(context, drawableResId)
-    drawable?.let {
+    VectorDrawableCompat.create(context.resources, drawableResId, null)?.let {
         DrawableCompat.setTint(it, color)
-        stateListDrawable.addState(intArrayOf(android.R.attr.state_enabled), drawable)
+        stateListDrawable.addState(intArrayOf(android.R.attr.state_enabled), it)
     }
     return stateListDrawable
 }
