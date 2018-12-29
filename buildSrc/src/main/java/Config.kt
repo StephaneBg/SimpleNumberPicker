@@ -32,6 +32,8 @@ object Versions {
 object Build {
     val androidGradle = "com.android.tools.build:gradle:${Versions.androidGradle}"
     val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    val mavenGradlePlugin = "com.github.dcendents:android-maven-gradle-plugin:2.1"
+    val bintrayGradlePlugin = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0"
 }
 
 object Android {

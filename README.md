@@ -1,4 +1,4 @@
-[![Release](https://jitpack.io/v/StephaneBg/SimpleNumberPicker.svg)](https://jitpack.io/#StephaneBg/SimpleNumberPicker)
+[ ![Download](https://api.bintray.com/packages/stephanebg/SimpleNumberPicker/SimpleNumberPicker/images/download.svg) ](https://bintray.com/stephanebg/SimpleNumberPicker/SimpleNumberPicker/_latestVersion)
 
 # SimpleNumberPicker
 
@@ -6,30 +6,13 @@ A customisable decimal and hexadecimal material picker view for Android.
 
 <img src="https://raw.githubusercontent.com/StephaneBg/SimpleNumberPicker/master/artwork/decimal_picker.png"><img src="https://raw.githubusercontent.com/StephaneBg/SimpleNumberPicker/master/artwork/hexa_picker.png">
 
-## Download
-Add the JitPack repository in your build.gradle at the end of repositories:
-```
-	allprojects {
-		repositories {
-			...
-			maven { url "https://jitpack.io" }
-		}
-	}
-```
-And add the dependencies
-#### AndroidX
+## Add the dependency
 ```
 	dependencies {
-	    implementation 'com.github.StephaneBg:SimpleNumberPicker:2.0'
+	    implementation 'com.sbgapps:simplenumberpicker:2.1.0'
 	}
 ```
 
-#### Support Library
-```
-	dependencies {
-	    implementation 'com.github.StephaneBg:SimpleNumberPicker:1.5'
-	}
-```
 
 ## Usage
 

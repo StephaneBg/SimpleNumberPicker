@@ -16,6 +16,8 @@
 
 plugins {
     id("com.android.library")
+    id("com.github.dcendents.android-maven")
+    id("com.jfrog.bintray")
     kotlin("android")
 }
 
@@ -42,3 +44,5 @@ dependencies {
     api(Libs.constraintLayout)
     api(Libs.material)
 }
+
+apply(from = "../publish-android.gradle")
