@@ -18,22 +18,19 @@ import org.gradle.api.JavaVersion
 
 object Versions {
     val java = JavaVersion.VERSION_1_8
-    val androidGradle = "3.3.0-rc03"
-    val kotlin = "1.3.11"
+    val androidGradle = "3.3.0"
+    val kotlin = "1.3.20"
     val appcompat = "1.0.0"
     val vectorDrawable = "1.0.0"
     val ktx = "1.0.1"
     val anko = "0.10.8"
     val constraintLayout = "1.1.3"
     val material = "1.0.0"
-    val rangeView = "0.1.1"
+    val rangeView = "0.2.0"
 }
 
 object Build {
     val androidGradle = "com.android.tools.build:gradle:${Versions.androidGradle}"
-    val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-    val mavenGradlePlugin = "com.github.dcendents:android-maven-gradle-plugin:2.1"
-    val bintrayGradlePlugin = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0"
 }
 
 object Android {

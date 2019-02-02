@@ -18,14 +18,16 @@ package com.sbgapps.simplenumberpicker.sample
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
 import com.sbgapps.simplenumberpicker.decimal.DecimalPickerDialog
 import com.sbgapps.simplenumberpicker.decimal.DecimalPickerHandler
 import com.sbgapps.simplenumberpicker.hex.HexaPickerDialog
 import com.sbgapps.simplenumberpicker.hex.HexaPickerHandler
-
-import kotlinx.android.synthetic.main.activity_main.*
+import me.bendik.simplerangeview.SimpleRangeView
+import org.jetbrains.anko.find
 
 class MainActivity : AppCompatActivity(), HexaPickerHandler, DecimalPickerHandler {
 
@@ -33,38 +35,34 @@ class MainActivity : AppCompatActivity(), HexaPickerHandler, DecimalPickerHandle
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        decimalAction.setOnClickListener { showDecimalPicker() }
-        hexaAction.setOnClickListener { showHexDialog() }
+        find<Button>(R.id.decimalAction).setOnClickListener { showDecimalPicker() }
+        find<Button>(R.id.hexaAction).setOnClickListener { showHexDialog() }
     }
 
     @SuppressLint("SetTextI18n")
     override fun onDecimalNumberPicked(reference: Int, number: Float) {
-        decimalTextView.text = "$number"
+        find<TextView>(R.id.decimalTextView).text = "$number"
     }
 
-    private fun showDecimalPicker() {
-        DecimalPickerDialog.Builder()
-                .setReference(REF_DEC_DIALOG)
-                .setNatural(naturalCheckBox.isChecked)
-                .setRelative(relativeCheckBox.isChecked)
-                .setTheme(R.style.DecimalPickerTheme)
-                .create()
-                .show(supportFragmentManager, TAG_DEC_DIALOG)
-    }
+    private fun showDecimalPicker() = DecimalPickerDialog.Builder()
+        .setReference(REF_DEC_DIALOG)
+        .setNatural(find<CheckBox>(R.id.naturalCheckBox).isChecked)
+        .setRelative(find<CheckBox>(R.id.relativeCheckBox).isChecked)
+        .setTheme(R.style.DecimalPickerTheme)
+        .create()
+        .show(supportFragmentManager, TAG_DEC_DIALOG)
 
     override fun onHexaNumberPicked(reference: Int, hexNumber: String) {
-        hexaTextView.text = hexNumber
+        find<TextView>(R.id.hexaTextView).text = hexNumber
     }
 
-    private fun showHexDialog() {
-        HexaPickerDialog.Builder()
-                .setReference(REF_HEX_DIALOG)
-                .setMinLength(rangeView.start + 1)
-                .setMaxLength(rangeView.end + 1)
-                .setTheme(R.style.HexaPickerTheme)
-                .create()
-                .show(supportFragmentManager, TAG_HEX_DIALOG)
-    }
+    private fun showHexDialog() = HexaPickerDialog.Builder()
+        .setReference(REF_HEX_DIALOG)
+        .setMinLength(find<SimpleRangeView>(R.id.rangeView).start + 1)
+        .setMaxLength(find<SimpleRangeView>(R.id.rangeView).end + 1)
+        .setTheme(R.style.HexaPickerTheme)
+        .create()
+        .show(supportFragmentManager, TAG_HEX_DIALOG)
 
     companion object {
         private const val REF_DEC_DIALOG = 1

@@ -1,3 +1,5 @@
+import org.jlleitschuh.gradle.ktlint.KtlintExtension
+
 /*
  * Copyright 2017 Stéphane Baiget
  *
@@ -14,6 +16,11 @@
  * limitations under the License.
  */
 
+plugins {
+    id("com.github.ben-manes.versions") version "0.20.0"
+    id("org.jlleitschuh.gradle.ktlint") version "7.0.0"
+}
+
 buildscript {
     repositories {
         jcenter()
@@ -21,10 +28,8 @@ buildscript {
     }
 
     dependencies {
+        classpath(kotlin("gradle-plugin", Versions.kotlin))
         classpath(Build.androidGradle)
-        classpath(Build.kotlinGradlePlugin)
-        classpath(Build.mavenGradlePlugin)
-        classpath(Build.bintrayGradlePlugin)
     }
 }
 
@@ -32,6 +37,13 @@ allprojects {
     repositories {
         jcenter()
         google()
+    }
+}
+
+subprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+    configure<KtlintExtension> {
+        android.set(true)
     }
 }
 
