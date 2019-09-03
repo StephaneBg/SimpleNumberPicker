@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sbgapps.simplenumberpicker.hex
+package fr.baiget.simplenumberpicker.hex
 
 interface HexaPickerHandler {
     fun onHexaNumberPicked(reference: Int, hexNumber: String)

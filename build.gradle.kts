@@ -19,6 +19,8 @@ import org.jlleitschuh.gradle.ktlint.KtlintExtension
 plugins {
     id("com.github.ben-manes.versions") version "0.20.0"
     id("org.jlleitschuh.gradle.ktlint") version "7.0.0"
+    id("com.github.dcendents.android-maven") version "2.1"
+    id("com.jfrog.bintray") version "1.8.4"
 }
 
 buildscript {
@@ -45,8 +47,4 @@ subprojects {
     configure<KtlintExtension> {
         android.set(true)
     }
-}
-
-tasks.register("clean", Delete::class.java) {
-    delete(rootProject.buildDir)
 }

@@ -17,8 +17,6 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    id("com.jfrog.bintray") version "1.8.4"
-    `maven-publish`
 }
 
 android {
@@ -43,5 +41,3 @@ dependencies {
     api(Libs.anko)
     api(Libs.constraintLayout)
 }
-
-apply(from = "../publish.gradle.kts")

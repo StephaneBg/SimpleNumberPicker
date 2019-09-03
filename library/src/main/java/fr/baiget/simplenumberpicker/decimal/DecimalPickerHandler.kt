@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sbgapps.simplenumberpicker.decimal
+package fr.baiget.simplenumberpicker.decimal
 
 interface DecimalPickerHandler {
     fun onDecimalNumberPicked(reference: Int, number: Float)

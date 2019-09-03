@@ -37,7 +37,6 @@ object Android {
     val minSdkVersion = 16
     val targetSdkVersion = 28
     val compileSdkVersion = targetSdkVersion
-    val applicationId = "com.sbgapps.simplenumberpicker"
 }
 
 object Libs {

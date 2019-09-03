@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sbgapps.simplenumberpicker.utils
+package fr.baiget.simplenumberpicker.utils
 
 import android.content.Context
 import android.graphics.drawable.StateListDrawable

@@ -17,7 +17,7 @@
 
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sbgapps.simplenumberpicker.sample"
+    package="fr.baiget.simplenumberpicker.sample"
     >
 
     <application
@@ -27,7 +27,7 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         >
-        <activity android:name=".MainActivity">
+        <activity android:name="fr.baiget.simplenumberpicker.sample.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

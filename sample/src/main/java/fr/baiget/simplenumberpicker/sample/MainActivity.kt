@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sbgapps.simplenumberpicker.sample
+package fr.baiget.simplenumberpicker.sample
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -22,14 +22,15 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.sbgapps.simplenumberpicker.decimal.DecimalPickerDialog
-import com.sbgapps.simplenumberpicker.decimal.DecimalPickerHandler
-import com.sbgapps.simplenumberpicker.hex.HexaPickerDialog
-import com.sbgapps.simplenumberpicker.hex.HexaPickerHandler
+import fr.baiget.simplenumberpicker.decimal.DecimalPickerDialog
+import fr.baiget.simplenumberpicker.decimal.DecimalPickerHandler
+import fr.baiget.simplenumberpicker.hex.HexaPickerDialog
+import fr.baiget.simplenumberpicker.hex.HexaPickerHandler
 import me.bendik.simplerangeview.SimpleRangeView
 import org.jetbrains.anko.find
 
-class MainActivity : AppCompatActivity(), HexaPickerHandler, DecimalPickerHandler {
+class MainActivity : AppCompatActivity(), HexaPickerHandler,
+    DecimalPickerHandler {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +51,9 @@ class MainActivity : AppCompatActivity(), HexaPickerHandler, DecimalPickerHandle
         .setRelative(find<CheckBox>(R.id.relativeCheckBox).isChecked)
         .setTheme(R.style.DecimalPickerTheme)
         .create()
-        .show(supportFragmentManager, TAG_DEC_DIALOG)
+        .show(supportFragmentManager,
+            TAG_DEC_DIALOG
+        )
 
     override fun onHexaNumberPicked(reference: Int, hexNumber: String) {
         find<TextView>(R.id.hexaTextView).text = hexNumber
@@ -62,7 +65,9 @@ class MainActivity : AppCompatActivity(), HexaPickerHandler, DecimalPickerHandle
         .setMaxLength(find<SimpleRangeView>(R.id.rangeView).end + 1)
         .setTheme(R.style.HexaPickerTheme)
         .create()
-        .show(supportFragmentManager, TAG_HEX_DIALOG)
+        .show(supportFragmentManager,
+            TAG_HEX_DIALOG
+        )
 
     companion object {
         private const val REF_DEC_DIALOG = 1

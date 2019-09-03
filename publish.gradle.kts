@@ -1,4 +1,4 @@
-import com.jfrog.bintray.gradle.BintrayExtension.*
+import com.jfrog.bintray.gradle.BintrayExtension
 import groovy.util.Node
 import org.gradle.jvm.tasks.Jar
 
@@ -20,7 +20,7 @@ val sourcesJar by tasks.creating(Jar::class) {
 publishing {
     publications {
         create("MavenJava", MavenPublication::class.java) {
-            from(components["java"])
+            from(android.components["java"])
             artifact(sourcesJar)
             pom.withXml {
                 NodeScope(asNode()) {

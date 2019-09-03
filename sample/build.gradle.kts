@@ -32,7 +32,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = Android.applicationId
+        applicationId = "fr.baiget.simplenumberpicker.sample"
         versionCode = versionMajor * 1000 + versionMinor * 100 + versionPatch
         versionName = "$versionMajor.$versionMinor.$versionPatch"
         vectorDrawables.useSupportLibrary = true

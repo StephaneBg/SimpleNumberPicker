@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sbgapps.simplenumberpicker.decimal
+package fr.baiget.simplenumberpicker.decimal
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -28,9 +28,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.isInvisible
 import androidx.fragment.app.DialogFragment
-import com.sbgapps.simplenumberpicker.R
-import com.sbgapps.simplenumberpicker.utils.color
-import com.sbgapps.simplenumberpicker.utils.makeSelector
+import fr.baiget.simplenumberpicker.R
+import fr.baiget.simplenumberpicker.utils.color
+import fr.baiget.simplenumberpicker.utils.makeSelector
 import org.jetbrains.anko.colorAttr
 import org.jetbrains.anko.find
 import java.text.DecimalFormatSymbols
@@ -42,7 +42,8 @@ class DecimalPickerDialog : DialogFragment() {
     private lateinit var backspaceButton: ImageButton
     private lateinit var decimalSeparator: String
 
-    private var reference = DEFAULT_REFERENCE
+    private var reference =
+        DEFAULT_REFERENCE
     private var relative = true
     private var natural = false
     private var style = R.style.SimpleNumberPickerTheme
@@ -79,7 +80,11 @@ class DecimalPickerDialog : DialogFragment() {
         )
         backspaceButton = view.find(R.id.key_backspace)
         backspaceButton.setImageDrawable(
-            makeSelector(requireContext(), R.drawable.snp_ic_backspace_black_24dp, color)
+            makeSelector(
+                requireContext(),
+                R.drawable.snp_ic_backspace_black_24dp,
+                color
+            )
         )
         backspaceButton.setOnClickListener {
             var number = numberTextView.text.subSequence(0, numberTextView.text.length - 1)
@@ -205,15 +210,24 @@ class DecimalPickerDialog : DialogFragment() {
     }
 
     private fun assignArguments(args: Bundle?) {
-        if (args?.containsKey(ARG_REFERENCE) == true) reference = args.getInt(ARG_REFERENCE)
-        if (args?.containsKey(ARG_RELATIVE) == true) relative = args.getBoolean(ARG_RELATIVE)
-        if (args?.containsKey(ARG_NATURAL) == true) natural = args.getBoolean(ARG_NATURAL)
-        if (args?.containsKey(ARG_STYLE) == true) style = args.getInt(ARG_STYLE)
+        if (args?.containsKey(ARG_REFERENCE) == true) reference = args.getInt(
+            ARG_REFERENCE
+        )
+        if (args?.containsKey(ARG_RELATIVE) == true) relative = args.getBoolean(
+            ARG_RELATIVE
+        )
+        if (args?.containsKey(ARG_NATURAL) == true) natural = args.getBoolean(
+            ARG_NATURAL
+        )
+        if (args?.containsKey(ARG_STYLE) == true) style = args.getInt(
+            ARG_STYLE
+        )
     }
 
     class Builder {
 
-        private var reference = DEFAULT_REFERENCE
+        private var reference =
+            DEFAULT_REFERENCE
         private var relative = true
         private var natural = false
         private var theme = R.style.SimpleNumberPickerTheme
@@ -238,7 +252,13 @@ class DecimalPickerDialog : DialogFragment() {
             return this
         }
 
-        fun create(): DecimalPickerDialog = newInstance(reference, relative, natural, theme)
+        fun create(): DecimalPickerDialog =
+            newInstance(
+                reference,
+                relative,
+                natural,
+                theme
+            )
     }
 
     companion object {

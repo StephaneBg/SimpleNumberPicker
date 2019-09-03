@@ -1,4 +1,4 @@
-package com.sbgapps.simplenumberpicker.utils
+package fr.baiget.simplenumberpicker.utils
 
 import android.content.Context
 import androidx.annotation.ColorRes
